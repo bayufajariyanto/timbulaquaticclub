@@ -21,12 +21,17 @@ Route::get('/tes', function() {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/pertanyaan', 'HomeController@pertanyaan')->name('pertanyaan');
 Route::get('/laporan', 'HomeController@laporan')->name('laporan');
-Route::get('/list', 'MuridController@list')->name('murid.list');
-Route::get('/tambahakun', 'MuridController@add')->name('murid.tambah');
-Route::get('/nilai', 'MuridController@nilai')->name('murid.nilai');
+Route::name('murid.')->prefix('/murid')->group(function() {
+    Route::get('/list', 'MuridController@list')->name('list');
+    Route::get('/tambah', 'MuridController@add')->name('tambah');
+    Route::get('/nilai', 'MuridController@nilai')->name('nilai');
+});
 // Route::get('/nilai', 'MuridController@nilaibyid')->name('murid.nilaibyid');
 Route::get('/daftar', 'LandingPage@daftar');
 Route::get('/pelatih', 'LandingPage@pelatih');
 Route::get('/tentang', 'LandingPage@tentang');
 Route::get('/lokasi', 'LandingPage@lokasi');
 Route::post('/daftar/simpan', 'LandingPage@simpandaftar');
+
+Route::post('/pendaftaran', 'Homecontroller@pendaftaranpost')->name('pendaftaran');
+

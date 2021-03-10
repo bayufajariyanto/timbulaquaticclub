@@ -24,7 +24,7 @@
             <tbody>
             <tr>
                 <td>
-                <img src="assets/images/faces/face1.jpg" class="mr-2" alt="image"> David Grey
+                <img src="{{asset('assets/images/faces/face1.jpg')}}" class="mr-2" alt="image"> David Grey
                 </td>
                 <td> Fund is not recieved </td>
                 <td>
@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <td>
-                <img src="assets/images/faces/face2.jpg" class="mr-2" alt="image"> Stella Johnson
+                <img src="{{asset('assets/images/faces/face2.jpg')}}" class="mr-2" alt="image"> Stella Johnson
                 </td>
                 <td> High loading time </td>
                 <td>
@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td>
-                <img src="assets/images/faces/face3.jpg" class="mr-2" alt="image"> Marina Michel
+                <img src="{{asset('assets/images/faces/face3.jpg')}}" class="mr-2" alt="image"> Marina Michel
                 </td>
                 <td> Website down for one week </td>
                 <td>
@@ -57,7 +57,7 @@
             </tr>
             <tr>
                 <td>
-                <img src="assets/images/faces/face4.jpg" class="mr-2" alt="image"> John Doe
+                <img src="{{asset('assets/images/faces/face4.jpg')}}" class="mr-2" alt="image"> John Doe
                 </td>
                 <td> Loosing control on server </td>
                 <td>

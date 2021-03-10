@@ -25,7 +25,7 @@
             <tr>
                 <td> Dec 5, 2017 </td>
                 <td>
-                <img src="assets/images/faces/face1.jpg" class="mr-2" alt="image"> David Grey
+                <img src="{{asset('assets/images/faces/face1.jpg')}}" class="mr-2" alt="image"> David Grey
                 </td>
                 <td> Fund is not recieved </td>
                 <td>
@@ -36,7 +36,7 @@
             <tr>
                 <td> Dec 12, 2017 </td>
                 <td>
-                <img src="assets/images/faces/face2.jpg" class="mr-2" alt="image"> Stella Johnson
+                <img src="{{asset('assets/images/faces/face2.jpg')}}" class="mr-2" alt="image"> Stella Johnson
                 </td>
                 <td> High loading time </td>
                 <td>
@@ -47,7 +47,7 @@
             <tr>
                 <td> Dec 16, 2017 </td>
                 <td>
-                <img src="assets/images/faces/face3.jpg" class="mr-2" alt="image"> Marina Michel
+                <img src="{{asset('assets/images/faces/face3.jpg')}}" class="mr-2" alt="image"> Marina Michel
                 </td>
                 <td> Website down for one week </td>
                 <td>
