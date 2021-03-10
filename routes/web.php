@@ -33,5 +33,5 @@ Route::get('/tentang', 'LandingPage@tentang');
 Route::get('/lokasi', 'LandingPage@lokasi');
 Route::post('/daftar/simpan', 'LandingPage@simpandaftar');
 
-Route::post('/pendaftaran', 'Homecontroller@pendaftaranpost')->name('pendaftaran');
+Route::post('/pendaftaran', 'AjaxController@pendaftaranpost')->name('pendaftaran');
 

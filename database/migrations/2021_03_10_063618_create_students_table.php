@@ -25,6 +25,7 @@ class CreateStudentsTable extends Migration
             $table->string('foto');
             $table->string('riwayat')->nullable();
             $table->string('alasan')->nullable();
+            $table->boolean('isapproved')->default(0);
             $table->timestamps();
         });
     }
