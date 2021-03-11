@@ -24,15 +24,4 @@ class HomeController extends Controller
         return view('dashboard.index');
     }
 
-    public function pertanyaan()
-    {
-        return view('dashboard.pertanyaan');
-    }
-
-    public function laporan()
-    {
-        return view('dashboard.laporan');
-    }
-
-    
 }

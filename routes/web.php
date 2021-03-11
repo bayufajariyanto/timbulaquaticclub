@@ -19,12 +19,20 @@ Route::get('/tes', function() {
     return view('dashboard.tes');
 });
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/pertanyaan', 'HomeController@pertanyaan')->name('pertanyaan');
-Route::get('/laporan', 'HomeController@laporan')->name('laporan');
+Route::get('/pertanyaan', 'AdministratorController@pertanyaan')->name('pertanyaan');
+Route::get('/laporan', 'AdministratorController@laporan')->name('laporan');
 Route::name('murid.')->prefix('/murid')->group(function() {
     Route::get('/list', 'MuridController@list')->name('list');
     Route::get('/tambah', 'MuridController@add')->name('tambah');
-    Route::get('/nilai', 'MuridController@nilai')->name('nilai');
+    Route::get('/nilai', 'NilaiController@nilai')->name('nilai');
+});
+Route::name('akun.')->prefix('/akun')->group(function() {
+    Route::get('/list', 'AkunController@show')->name('list');
+    Route::get('/tambah', 'AkunController@add')->name('tambah');
+    Route::post('/store', 'AkunController@store')->name('store');
+    Route::get('/list/edit/{id}', 'AkunController@edit')->name('edit');
+    Route::post('/update', 'AkunController@update')->name('update');
+    Route::get('/list/hapus/{id}', 'AkunController@destroy')->name('hapus');
 });
 // Route::get('/nilai', 'MuridController@nilaibyid')->name('murid.nilaibyid');
 Route::get('/daftar', 'LandingPage@daftar');
@@ -34,4 +42,5 @@ Route::get('/lokasi', 'LandingPage@lokasi');
 Route::post('/daftar/simpan', 'LandingPage@simpandaftar');
 
 Route::post('/pendaftaran', 'AjaxController@pendaftaranpost')->name('pendaftaran');
+Route::get('/gettest', 'AjaxController@tes');
 

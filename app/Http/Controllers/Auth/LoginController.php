@@ -26,7 +26,16 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    public function redirectTo()
+    {
+        $for = [
+            'Super Admin' => 'home',
+            'Admin' => 'home',
+            'Student' => 'murid.nilai'
+        ];
+        return $this->redirectTo = route($for[auth()->user()->roles]);
+    }
 
     /**
      * Create a new controller instance.

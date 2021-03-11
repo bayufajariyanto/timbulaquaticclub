@@ -23,6 +23,7 @@ class CreateStudentsTable extends Migration
             $table->string('jenis_kelamin');
             $table->string('pelatih');
             $table->string('foto');
+            $table->string('bukti');
             $table->string('riwayat')->nullable();
             $table->string('alasan')->nullable();
             $table->boolean('isapproved')->default(0);

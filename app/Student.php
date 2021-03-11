@@ -15,6 +15,7 @@ class Student extends Model
         'jenis_kelamin',
         'pelatih',
         'foto',
+        'bukti',
         'riwayat',
         'alasan'
     ];

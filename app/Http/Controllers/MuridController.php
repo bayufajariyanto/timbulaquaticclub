@@ -4,26 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class MuridController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('manage-student')) return $next($request);
+            abort(403, 'Anda tidak memiliki akses');
+        });
     }
 
     public function list(){
         return view('murid.list');
-    }
-
-    public function nilai(){
-        return view('murid.nilai');
-    }
-    
-    // public function nilaibyid(){
-    //     $id = Auth::user()->id;
-    //     return view('murid.nilai', ['id' => $id]);        
-    // }
+    }    
 
     public function add(){
         return view('murid.tambah');
