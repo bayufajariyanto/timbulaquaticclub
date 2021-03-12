@@ -1,8 +1,19 @@
 @extends('layouts.dashboard')
 @section('breadcumb')
-<span class="page-title-icon bg-gradient-primary text-white mr-2">
-    <i class="mdi mdi-file-document"></i>
-</span> Laporan
+<div class="page-header">
+    <h3 class="page-title">
+        <span class="page-title-icon bg-gradient-primary text-white mr-2">
+            <i class="mdi mdi-file-document"></i>
+        </span> Laporan
+    </h3>
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+            </li>
+        </ul>
+    </nav>
+</div>
 @endsection
 @section('content')
 <div class="row">
@@ -19,6 +30,7 @@
                 <th> Status </th>
                 <th> Last Update </th>
                 <th> Tracking ID </th>
+                <th> Aksi </th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +44,7 @@
                 </td>
                 <td> Dec 5, 2017 </td>
                 <td> WD-12345 </td>
+                <td> <a href="{{route('laporan.detail')}}" class="btn btn-sm btn-info">Detail</a> </td>
             </tr>
             <tr>
                 <td>
@@ -43,6 +56,7 @@
                 </td>
                 <td> Dec 12, 2017 </td>
                 <td> WD-12346 </td>
+                <td> <a href="{{route('laporan.detail')}}" class="btn btn-sm btn-info">Detail</a> </td>
             </tr>
             <tr>
                 <td>
@@ -54,6 +68,7 @@
                 </td>
                 <td> Dec 16, 2017 </td>
                 <td> WD-12347 </td>
+                <td> <a href="{{route('laporan.detail')}}" class="btn btn-sm btn-info">Detail</a> </td>
             </tr>
             <tr>
                 <td>
@@ -65,6 +80,7 @@
                 </td>
                 <td> Dec 3, 2017 </td>
                 <td> WD-12348 </td>
+                <td> <a href="{{route('laporan.detail')}}" class="btn btn-sm btn-info">Detail</a> </td>
             </tr>
             </tbody>
         </table>

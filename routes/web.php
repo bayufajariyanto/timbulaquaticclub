@@ -20,7 +20,11 @@ Route::get('/tes', function() {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/pertanyaan', 'AdministratorController@pertanyaan')->name('pertanyaan');
-Route::get('/laporan', 'AdministratorController@laporan')->name('laporan');
+// Route::get('/laporan', 'AdministratorController@laporan')->name('laporan');
+Route::name('laporan.')->prefix('/laporan')->group(function() {
+    Route::get('/', 'AdministratorController@laporan')->name('list');
+    Route::get('/detail', 'AdministratorController@detail_laporan')->name('detail');
+});
 Route::name('murid.')->prefix('/murid')->group(function() {
     Route::get('/list', 'MuridController@list')->name('list');
     Route::get('/tambah', 'MuridController@add')->name('tambah');

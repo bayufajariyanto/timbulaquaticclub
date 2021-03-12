@@ -1,8 +1,19 @@
 @extends('layouts.dashboard')
 @section('breadcumb')
-<span class="page-title-icon bg-gradient-primary text-white mr-2">
-    <i class="mdi mdi-chart-bar"></i>
-</span> Nilai
+<div class="page-header">
+    <h3 class="page-title">
+        <span class="page-title-icon bg-gradient-primary text-white mr-2">
+            <i class="mdi mdi-chart-bar"></i>
+        </span> Rapor
+    </h3>
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+            </li>
+        </ul>
+    </nav>
+</div>
 @endsection
 @section('content')
 <div class="row">

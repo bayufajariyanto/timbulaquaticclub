@@ -24,4 +24,8 @@ class AdministratorController extends Controller
     {
         return view('dashboard.laporan');
     }
+    public function detail_laporan()
+    {
+        return view('dashboard.detail_laporan');
+    }
 }

@@ -58,7 +58,7 @@
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
-                    </form>                    
+                    </form>
                 </div>
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -70,93 +70,76 @@
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav">                
-                <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('home') }}">
-                    <span class="menu-title">Dashboard</span>
-                    <i class="mdi mdi-home menu-icon"></i>
-                </a>
-                </li>            
-                @can('manage-administration')                    
-                <li class="nav-item {{ Route::is('pertanyaan') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('pertanyaan') }}">
-                    <span class="menu-title">Pertanyaan</span>
-                    <i class="mdi mdi-message menu-icon"></i>
-                </a>
-                </li>
-                <li class="nav-item {{ Route::is('laporan') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('laporan') }}">
-                    <span class="menu-title">Laporan</span>
-                    <i class="mdi mdi-file-document menu-icon"></i>
-                </a>
-                </li>
-                @endcan
-                @can('manage-users')
-                <li class="nav-item sidebar-actions">
-                <span class="nav-link">                    
-                    <div class="border-bottom">
-                        <p class="text-secondary">Akun</p>
-                    </div>                    
-                </span>
-                </li>                
-                <li class="nav-item {{ Route::is('akun.list') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('akun.list') }}">
-                        <span class="menu-title">List Akun</span>
-                        <i class="mdi mdi-account-multiple menu-icon"></i>
+                <ul class="nav">                
+                    <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('home') }}">
+                        <span class="menu-title">Dashboard</span>
+                        <i class="mdi mdi-home menu-icon"></i>
                     </a>
-                </li>
-                <li class="nav-item {{ Route::is('akun.tambah') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('akun.tambah') }}">
-                        <span class="menu-title">Tambah Akun</span>
-                        <i class="mdi mdi-account-multiple-plus menu-icon"></i>
+                    </li>            
+                    @can('manage-administration')                    
+                    <li class="nav-item {{ Route::is('pertanyaan') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('pertanyaan') }}">
+                        <span class="menu-title">Pertanyaan</span>
+                        <i class="mdi mdi-message menu-icon"></i>
                     </a>
-                </li>
-                @endcan                
-                @can('manage-administration')                    
-                <li class="nav-item sidebar-actions">
-                <span class="nav-link">                    
-                    <div class="border-bottom">
-                        <p class="text-secondary">Murid</p>
-                    </div>                    
-                </span>
-                </li>                                          
-                <li class="nav-item {{ Route::is('murid.list') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('murid.list') }}">
-                        <span class="menu-title">List Murid</span>
-                        <i class="mdi mdi-account-multiple menu-icon"></i>
+                    </li>
+                    <li class="nav-item {{ Route::is('laporan.list') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('laporan.list') }}">
+                        <span class="menu-title">Laporan</span>
+                        <i class="mdi mdi-file-document menu-icon"></i>
                     </a>
-                </li>
-                <li class="nav-item {{ Route::is('murid.tambah') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('murid.tambah') }}">
-                        <span class="menu-title">Tambah Murid</span>
-                        <i class="mdi mdi-account-multiple-plus menu-icon"></i>
-                    </a>
-                </li>
-                @endcan                
-                <li class="nav-item {{ Route::is('murid.nilai') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('murid.nilai') }}">
-                        <span class="menu-title">Nilai</span>
-                        <i class="mdi mdi-chart-bar menu-icon"></i>
-                    </a>                    
-                </li>
-            </ul>
+                    </li>
+                    @endcan
+                    @can('manage-users')
+                    <li class="nav-item sidebar-actions">
+                    <span class="nav-link">                    
+                        <div class="border-bottom">
+                            <p class="text-secondary">Akun</p>
+                        </div>                    
+                    </span>
+                    </li>                
+                    <li class="nav-item {{ Route::is('akun.list') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('akun.list') }}">
+                            <span class="menu-title">List Akun</span>
+                            <i class="mdi mdi-account-multiple menu-icon"></i>
+                        </a>
+                    </li>
+                    @endcan                
+                    @can('manage-administration')                    
+                    <li class="nav-item sidebar-actions">
+                    <span class="nav-link">                    
+                        <div class="border-bottom">
+                            <p class="text-secondary">Murid</p>
+                        </div>                    
+                    </span>
+                    </li>                                          
+                    <li class="nav-item {{ Route::is('murid.list') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('murid.list') }}">
+                            <span class="menu-title">List Murid</span>
+                            <i class="mdi mdi-account-multiple menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('murid.tambah') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('murid.tambah') }}">
+                            <span class="menu-title">Tambah Murid</span>
+                            <i class="mdi mdi-account-multiple-plus menu-icon"></i>
+                        </a>
+                    </li>
+                    @endcan                
+                    <li class="nav-item {{ Route::is('murid.nilai') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('murid.nilai') }}">
+                            <span class="menu-title">Rapor</span>
+                            <i class="mdi mdi-chart-bar menu-icon"></i>
+                        </a>                    
+                    </li>
+                </ul>
             </nav>
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
                     @yield('alert')
-                    <div class="page-header">
-                        <h3 class="page-title">
-                            @yield('breadcumb')                            
-                        </h3>
-                        <nav aria-label="breadcrumb">
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>                    
+                    @yield('breadcumb')
                     @yield('content')
                 </div>
             </div>
