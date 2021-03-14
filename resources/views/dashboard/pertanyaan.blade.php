@@ -20,7 +20,7 @@
     <div class="col-12 grid-margin stretch-card">
     <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Recent Tickets</h4>
+        {{-- <h4 class="card-title">Recent Tickets</h4> --}}
         <div class="table-responsive">
         <table class="table">
             <thead>
@@ -29,54 +29,51 @@
                 <th> Nama </th>
                 <th> Email </th>
                 <th> Nomor HP (WA) </th>
+                <th> Pesan </th>
                 <th> Action </th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td> Dec 5, 2017 </td>
-                <td>
-                <img src="{{asset('assets/images/faces/face1.jpg')}}" class="mr-2" alt="image"> David Grey
-                </td>
+                <td>David Grey</td>
+                <td>emal@gmail.com</td>
+                <td>0827265</td>
                 <td> Fund is not recieved </td>
-                <td>
-                <label class="badge badge-gradient-success">DONE</label>
+                <td>                     
+                    <a class="btn btn-danger btn-sm" href="#">Delete</a> 
                 </td>
-                <td> WD-12345 </td>
             </tr>
             <tr>
                 <td> Dec 12, 2017 </td>
-                <td>
-                <img src="{{asset('assets/images/faces/face2.jpg')}}" class="mr-2" alt="image"> Stella Johnson
-                </td>
+                <td> Stella Johnson</td>
+                <td>emal@gmail.com</td>
+                <td>0827265</td>
                 <td> High loading time </td>
-                <td>
-                <label class="badge badge-gradient-warning">PROGRESS</label>
+                <td>                     
+                    <a class="btn btn-danger btn-sm" href="#">Delete</a> 
                 </td>
-                <td> WD-12346 </td>
             </tr>
             <tr>
                 <td> Dec 16, 2017 </td>
-                <td>
-                <img src="{{asset('assets/images/faces/face3.jpg')}}" class="mr-2" alt="image"> Marina Michel
-                </td>
+                <td> Marina Michel</td>
+                <td>emal@gmail.com</td>
+                <td>0827265</td>
                 <td> Website down for one week </td>
-                <td>
-                <label class="badge badge-gradient-info">ON HOLD</label>
+                <td>                     
+                    <a class="btn btn-danger btn-sm" href="#">Delete</a> 
                 </td>
-                <td> WD-12347 </td>
-            </tr>
+            </tr>        
             <tr>
                 <td> Dec 3, 2017 </td>
-                <td>
-                <img src="assets/images/faces/face4.jpg" class="mr-2" alt="image"> John Doe
-                </td>
+                <td> John Doe</td>
+                <td>emal@gmail.com</td>
+                <td>0827265</td>
                 <td> Loosing control on server </td>
-                <td>
-                <label class="badge badge-gradient-danger">REJECTED</label>
+                <td>                     
+                    <a class="btn btn-danger btn-sm" href="#">Delete</a> 
                 </td>
-                <td> WD-12348 </td>
-            </tr>
+            </tr>                    
             </tbody>
         </table>
         </div>

@@ -15,6 +15,16 @@ class AdministratorController extends Controller
         });
     }
 
+    public function pendaftaran()
+    {
+        return view('dashboard.pendaftaran');
+    }
+
+    public function detail_pendaftaran($id)
+    {
+        return view('dashboard.detail_pendaftaran', ['id' => $id]);
+    }
+
     public function pertanyaan()
     {
         return view('dashboard.pertanyaan');
@@ -27,5 +37,9 @@ class AdministratorController extends Controller
     public function detail_laporan()
     {
         return view('dashboard.detail_laporan');
+    }
+    public function store_laporan(Request $request)
+    {
+        dd('store laporan');
     }
 }
