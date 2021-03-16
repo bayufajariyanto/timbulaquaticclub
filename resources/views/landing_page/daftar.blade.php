@@ -1,7 +1,7 @@
 @extends('layout.landing_template')
 @section('content')
 <section class="container mt-5" style="height: 100%">
-    <form action="{{ url('/pendaftaran') }}" method="post">
+    <form ng-submit="processForm()" ng-controller="controller" id="form" name="form">        
         <div class="card shadow-sm mb-5">
             <div class="card-body">
                 <h4 class="mb-5">Formulir Pendaftaran</h4>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div ng-repeat="row in jumlahorang">
+        <div ng-repeat="row in jumlahorang">                                    
             <div class="card shadow-sm mb-4" ng-show="isForm">
                 @csrf
                 <div class="card-header">
@@ -40,33 +40,33 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-5 form-floating">
-                                <input type="email" class="form-control" id="email@{{row}}" name="email[]" ng-model="form[row].email" placeholder="nama@contoh.com">
-                                <label for="email@{{row}}" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" ng-model="input[row].email" placeholder="nama@contoh.com" ng-change="onChangeEmail('email')">
+                                <label for="email" class="form-label">Email</label>
                             </div>
                             <div class="mb-5 form-floating">
-                                <input type="text" class="form-control" id="nama@{{row}}" name="nama[]" ng-model="form[row].nama" placeholder="Nama Lengkap">
-                                <label for="nama@{{row}}" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="nama" ng-model="input[row].nama" placeholder="Nama Lengkap">
+                                <label for="nama" class="form-label">Nama Lengkap</label>
                             </div>
                             <div class="mb-5 form-floating">
-                                <input type="text" class="form-control" id="telp@{{row}}" name="telp[]" ng-model="form[row].telp" placeholder="Nomor Telp.">
-                                <label for="telp@{{row}}" class="form-label">Nomor Telepon/HP (WhatsApp)</label>
+                                <input type="text" class="form-control" id="telp" ng-model="input[row].telp" placeholder="Nomor Telp.">
+                                <label for="telp" class="form-label">Nomor Telepon/HP (WhatsApp)</label>
                             </div>
                             <div class="mb-5 form-floating">
-                                <input type="date" class="form-control" id="tanggal_lahir@{{row}}" name="tanggal_lahir[]" ng-model="form[row].tanggal_lahir" placeholder="Tanggal Lahir">
-                                <label for="tanggal_lahir@{{row}}" class="form-label">Tanggal Lahir</label>
+                                <input type="date" class="form-control" id="tanggal_lahir" ng-model="input[row].tanggal_lahir" placeholder="Tanggal Lahir">
+                                <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                             </div>
                             <div class="form-floating mb-5">
-                                <textarea class="form-control" placeholder="Alamat" id="alamat@{{row}}" name="alamat[]" ng-model="form[row].alamat" style="height: 100px"></textarea>
-                                <label for="alamat@{{row}}">Alamat</label>
+                                <textarea class="form-control" placeholder="Alamat" id="alamat" ng-model="input[row].alamat" style="height: 100px"></textarea>
+                                <label for="alamat">Alamat</label>
                             </div>
                             <div class="mb-5">
                                 <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label><br>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="jenis_kelamin[]" ng-model="form[row].jenis_kelamin" id="laki@{{row}}" value="laki">
+                                    <input type="radio" class="form-check-input" ng-model="input[row].jenis_kelamin" id="laki@{{row}}" value="laki">
                                     <label class="form-check-label" for="laki@{{row}}">Laki-laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="jenis_kelamin[]" ng-model="form[row].jenis_kelamin" id="perempuan@{{row}}" value="perempuan">
+                                    <input type="radio" class="form-check-input" ng-model="input[row].jenis_kelamin" id="perempuan@{{row}}" value="perempuan">
                                     <label class="form-check-label" for="perempuan@{{row}}">Perempuan</label>
                                 </div>
                             </div>           
@@ -75,28 +75,28 @@
                             <div class="mb-5">
                                 <label for="pelatih" class="form-label">Pelatih</label><br>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="pelatih[]" ng-model="form[row].pelatih" id="pelatihlaki@{{row}}" value="laki">
+                                    <input class="form-check-input" type="radio" ng-model="input[row].pelatih" id="pelatihlaki@{{row}}" value="laki">
                                     <label class="form-check-label" for="pelatihlaki@{{row}}">Laki-laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="pelatih[]" ng-model="form[row].pelatih" id="pelatihperempuan@{{row}}" value="perempuan">
+                                    <input class="form-check-input" type="radio" ng-model="input[row].pelatih" id="pelatihperempuan@{{row}}" value="perempuan">
                                     <label class="form-check-label" for="pelatihperempuan@{{row}}">Perempuan</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="pelatih[]" ng-model="form[row].pelatih" id="pelatihbebas@{{row}}" value="bebas">
+                                    <input class="form-check-input" type="radio" ng-model="input[row].pelatih" id="pelatihbebas@{{row}}" value="bebas">
                                     <label class="form-check-label" for="pelatihbebas@{{row}}">Bebas</label>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="foto@{{row}}" class="form-label">Unggah Foto Anda</label>
-                                <input class="form-control" name="foto[]" ng-model="form[row].foto" style="padding-top: 12px;padding-left: 20px" type="file" id="foto@{{row}}" placeholder="coba">
+                                <label for="foto@" class="form-label">Unggah Foto Anda</label>
+                                <input class="form-control" ng-model="input[row].foto" style="padding-top: 12px;padding-left: 20px" type="file" id="foto" placeholder="coba" ng-change="onFileSelected($event.target.files)">
                                 <div class="text-right">
                                     <small class="text-muted">Max. 2MB</small>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="bukti@{{row}}" class="form-label">Unggah Bukti Pembayaran</label>
-                                <input class="form-control" name="bukti[]" ng-model="form[row].bukti" style="padding-top: 12px;padding-left: 20px" type="file" id="bukti@{{row}}" placeholder="coba">
+                                <label for="bukti" class="form-label">Unggah Bukti Pembayaran</label>
+                                <input class="form-control" ng-model="input[row].bukti" style="padding-top: 12px;padding-left: 20px" type="file" id="bukti" placeholder="coba">
                                 <div class="text-right">
                                     <small class="text-muted">Max. 2MB</small>
                                 </div>
@@ -105,51 +105,52 @@
                                 <label for="pelatih" class="form-label">Riwayat Gangguan Tertentu</label><br>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="riwayat[]" ng-model="form[row].riwayat" id="riwayat1@{{row}}" value="jantung">
-                                            <label class="form-check-label" for="riwayat1@{{row}}">Jantung</label>
+                                        <div class="form-check">                                                     
+                                            <input class="form-check-input" type="checkbox" ng-model="riwayat[row][0].isChecked" id="riwayat1@{{row}}" value="riwayat[row][0].id">
+                                            <label class="form-check-label" for="riwayat1@{{row}}">@{{riwayat[row][0].label}}</label>
                                         </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="riwayat[]" ng-model="form[row].riwayat" id="riwayat2@{{row}}" value="paru">
-                                            <label class="form-check-label" for="riwayat2@{{row}}">Paru</label>
+                                        <div class="form-check">                                
+                                            <input class="form-check-input" type="checkbox" ng-model="riwayat[row][1].isChecked" id="riwayat2@{{row}}" value="riwayat[row][1].id">
+                                            <label class="form-check-label" for="riwayat2@{{row}}">@{{riwayat[row][1].label}}</label>
                                         </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="riwayat[]" ng-model="form[row].riwayat" id="riwayat3@{{row}}" value="otot">
-                                            <label class="form-check-label" for="riwayat3@{{row}}">Otot</label>
+                                        <div class="form-check">                                
+                                            <input class="form-check-input" type="checkbox" ng-model="riwayat[row][2].isChecked" id="riwayat3@{{row}}" value="riwayat[row][2].id">
+                                            <label class="form-check-label" for="riwayat3@{{row}}">@{{riwayat[row][2].label}}</label>
                                         </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="riwayat[]" ng-model="form[row].riwayat" id="riwayat4@{{row}}" value="syaraf">
-                                            <label class="form-check-label" for="riwayat4@{{row}}">Syaraf</label>
+                                        <div class="form-check">                                
+                                            <input class="form-check-input" type="checkbox" ng-model="riwayat[row][3].isChecked" id="riwayat4@{{row}}" value="riwayat[row][3].id">
+                                            <label class="form-check-label" for="riwayat4@{{row}}">@{{riwayat[row][3].label}}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="riwayat[]" ng-model="form[row].riwayat" id="riwayat5@{{row}}" value="tulang">
-                                            <label class="form-check-label" for="riwayat5@{{row}}">Tulang</label>
+                                        <div class="form-check">                                
+                                            <input class="form-check-input" type="checkbox" ng-model="riwayat[row][4].isChecked" id="riwayat5@{{row}}" value="riwayat[row][4].id">
+                                            <label class="form-check-label" for="riwayat5@{{row}}">@{{riwayat[row][4].label}}</label>
                                         </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="riwayat[]" ng-model="form[row].riwayat" id="riwayat6@{{row}}" value="lemak">
-                                            <label class="form-check-label" for="riwayat6@{{row}}">Lemak</label>
-                                        </div>        
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="riwayat[]" ng-model="form[row].riwayat" id="riwayat7@{{row}}" value="lainnya">
-                                            <label class="form-check-label" for="riwayat7@{{row}}">Jika ada yang lainnya sebutkan di kolom alasan belajar renang</label>
-                                        </div>        
+                                        <div class="form-check">                                
+                                            <input class="form-check-input" type="checkbox" ng-model="riwayat[row][5].isChecked" id="riwayat6@{{row}}" value="riwayat[row][5].id">
+                                            <label class="form-check-label" for="riwayat6@{{row}}">@{{riwayat[row][5].label}}</label>
+                                        </div>
+                                        <div class="form-check">                                
+                                            <input class="form-check-input" type="checkbox" ng-model="riwayat[row][6].isChecked" id="riwayat7@{{row}}" value="riwayat[row][6].id">
+                                            <label class="form-check-label" for="riwayat7@{{row}}">@{{riwayat[row][6].label}}</label>
+                                        </div>    
                                     </div>
                                 </div>
                             </div>
                             <div class="form-floating mb-5">
-                                <textarea class="form-control" placeholder="Tuliskan alasan anda" id="alasan@{{row}}" name="alasan[]" ng-model="form[row].alasan" style="height: 100px"></textarea>
-                                <label for="alasan@{{row}}">Alasan Belajar Renang</label>
+                                <textarea class="form-control" placeholder="Tuliskan alasan anda" id="alasan" ng-model="input[row].alasan" style="height: 100px"></textarea>
+                                <label for="alasan">Alasan Belajar Renang</label>
                             </div>
                         </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
         <div class="container" ng-show="isForm">
             <button class="btn btn-block btn-success" type="submit">Daftar!</button>
         </div>
-    </form>
+                    
+    </form>    
 </section>
 @endSection()

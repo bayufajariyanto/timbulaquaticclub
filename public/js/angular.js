@@ -1,7 +1,190 @@
 var app = angular.module('app', []);
-app.controller('controller', function ($scope) {
+app.controller('controller', function ($scope) {    
+    $scope.input = [
+        {
+            email : 'asd@gmail.com',
+            nama : 'asd',
+            telp : '0987',
+            tanggal_lahir : '',
+            jenis_kelamin : '',
+            alamat : 'malang',
+            pelatih : '',
+            alasan : 'asd',
+            foto : '',
+            bukti : '',
+            riwayat : []
+        },
+        {
+            email : 'tes@gmail.com',
+            nama : 'tes',
+            telp : '765',
+            tanggal_lahir : '',
+            jenis_kelamin : '',
+            alamat : 'turen',
+            pelatih : '',
+            alasan : 'qwe',
+            foto : '',
+            bukti : '',
+            riwayat : []
+        },
+        {
+            email : '',
+            nama : '',
+            telp : '',
+            tanggal_lahir : '',
+            jenis_kelamin : '',
+            alamat : '',
+            pelatih : '',
+            alasan : '',
+            foto : '',
+            bukti : '',
+            riwayat : []
+        },
+    ]
+    
+    $scope.riwayat = [        
+        [
+            {
+                id: 'jantung',
+                label: 'Jantung',
+                isChecked: false
+            },
+            {
+                id: 'paru',
+                label: 'Paru',
+                isChecked: false
+            },
+            {
+                id: 'tulang',
+                label: 'Tulang',
+                isChecked: false
+            },
+            {
+                id: 'lemak',
+                label: 'Lemak',
+                isChecked: false
+            },
+            {
+                id: 'otot',
+                label: 'Otot',
+                isChecked: false
+            },
+            {
+                id: 'syaraf',
+                label: 'Syaraf',
+                isChecked: false
+            },
+            {
+                id: 'lainnya',
+                label: 'Jika ada yang lainnya sebutkan di kolom alasan belajar renang',
+                isChecked: false
+            },
+        ],
+        [
+            {
+                id: 'jantung',
+                label: 'Jantung',
+                isChecked: false
+            },
+            {
+                id: 'paru',
+                label: 'Paru',
+                isChecked: false
+            },
+            {
+                id: 'tulang',
+                label: 'Tulang',
+                isChecked: false
+            },
+            {
+                id: 'lemak',
+                label: 'Lemak',
+                isChecked: false
+            },
+            {
+                id: 'otot',
+                label: 'Otot',
+                isChecked: false
+            },
+            {
+                id: 'syaraf',
+                label: 'Syaraf',
+                isChecked: false
+            },
+            {
+                id: 'lainnya',
+                label: 'Jika ada yang lainnya sebutkan di kolom alasan belajar renang',
+                isChecked: false
+            },
+        ],
+        [
+            {
+                id: 'jantung',
+                label: 'Jantung',
+                isChecked: false
+            },
+            {
+                id: 'paru',
+                label: 'Paru',
+                isChecked: false
+            },
+            {
+                id: 'tulang',
+                label: 'Tulang',
+                isChecked: false
+            },
+            {
+                id: 'lemak',
+                label: 'Lemak',
+                isChecked: false
+            },
+            {
+                id: 'otot',
+                label: 'Otot',
+                isChecked: false
+            },
+            {
+                id: 'syaraf',
+                label: 'Syaraf',
+                isChecked: false
+            },
+            {
+                id: 'lainnya',
+                label: 'Jika ada yang lainnya sebutkan di kolom alasan belajar renang',
+                isChecked: false
+            },
+        ]        
+    ]
+
+    
+    $scope.selectedRiwayat = []
+    
+    $scope.onFileSelected = (event) => {        
+        $scope.input.foto = event[0]        
+    }
+    
+    $scope.changeSelection = () => {
+        $scope.fetchSelectedItems()
+    }
+
+    $scope.fetchSelectedRiwayat = () => {
+        for (let index = 0; index < $scope.riwayat.length; index++) {
+            $scope.selectedRiwayat[index] = $scope.riwayat[index].filter((value, i) => {
+                return value.isChecked
+            })            
+        }        
+    }
+    
+    $scope.processForm = () => {                
+        $scope.fetchSelectedRiwayat()
+        for (let index = 0; index < $scope.tes.length; index++) {
+            $scope.input[index].riwayat = $scope.selectedRiwayat[index]            
+        }
+        console.log($scope.input)
+    }
+
     $scope.firstName = "John";
-    $scope.form = {}
+    $scope.form = []
     $scope.programs = [
         {
             nama: "1. Kelas Privat",

@@ -30,7 +30,7 @@ Route::name('laporan.')->prefix('/laporan')->group(function() {
     Route::get('/detail', 'AdministratorController@detail_laporan')->name('detail');
     Route::post('/store', 'AdministratorController@store_laporan')->name('store');
 });
-Route::name('murid.')->prefix('/murid')->group(function() {
+Route::name('murid.')->prefix('/atlit')->group(function() {
     Route::get('/list', 'MuridController@list')->name('list');
     Route::get('/tambah', 'MuridController@add')->name('tambah');
     Route::get('/nilai', 'NilaiController@nilai')->name('nilai');

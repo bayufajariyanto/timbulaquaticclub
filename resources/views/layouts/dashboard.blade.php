@@ -110,7 +110,7 @@
                 <li class="nav-item sidebar-actions">
                     <span class="nav-link">                    
                         <div class="border-bottom">
-                            <p class="text-secondary">Murid</p>
+                            <p class="text-secondary">Atlit</p>
                         </div>                    
                     </span>
                 </li>                                          
@@ -122,7 +122,7 @@
                 </li>
                 <li class="nav-item {{ Route::is('murid.list') ? 'active' : '' }}">                
                     <a class="nav-link" href="{{ route('murid.list') }}">
-                        <span class="menu-title">List Murid</span>
+                        <span class="menu-title">List Atlit</span>
                         <i class="mdi mdi-account-multiple menu-icon"></i>
                     </a>
                 </li>
