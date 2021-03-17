@@ -37,23 +37,27 @@ class AjaxController extends Controller
         $data = $request->all();
 
         // dd($data);
-        for ($i=0; $i < sizeof($data['email']); $i++) { 
-            echo "Email : ".$data['email'][$i]."<br>";
-            echo "Nama : ".$data['nama'][$i]."<br>";
-            echo "Telp : ".$data['telp'][$i]."<br>";
-            echo "Tanggal Lahir : ".$data['tanggal_lahir'][$i]."<br>";
-            echo "Alamat : ".$data['alamat'][$i]."<br>";
-            echo "Jenis Kelamin : ".$data['jenis_kelamin'][$i]."<br>";
-            echo "Pelatih : ".$data['pelatih'][$i]."<br>";
+        for ($i=0; $i < sizeof($data['email']); $i++) {             
+            echo "Email : ".$data['email'][$i]."\n";
+            echo "Nama : ".$data['nama'][$i]."\n";
+            echo "Telp : ".$data['telp'][$i]."\n";
+            echo "Tanggal Lahir : ".$data['tanggal_lahir'][$i]."\n";
+            echo "Alamat : ".$data['alamat'][$i]."\n";
+            echo "Jenis Kelamin : ".$data['jenis_kelamin'][$i]."\n";
+            echo "Pelatih : ".$data['pelatih'][$i]."\n";
             $files = $data['foto'][$i];
             $custom_filename = time().'-'.$files->getClientOriginalName();
             $filesbukti = $data['bukti'][$i];
             $custombukti = time().'-'.$filesbukti->getClientOriginalName();
-            echo "Foto : ".$custom_filename."<br>";
-            echo "Bukti : ".$custombukti."<br>";
-            echo "Riwayat : ".$data['riwayat'][$i]."<br>";
-            echo "Alasan : ".$data['alasan'][$i]."<br>";
-            echo "<hr>";
+            echo "Foto : ".$custom_filename."\n";
+            echo "Bukti : ".$custombukti."\n";
+            echo "Riwayat : \n";
+            $riwayat = json_decode($data['riwayat'][$i]);
+            foreach ($riwayat as $data) {
+                echo "- ".$data."\n";
+            }
+            echo "Alasan : ".$data['alasan'][$i]."\n";
+            echo "------------------------\n";            
         }
 
         // for ($i=0; $i < sizeof($data['email']); $i++) { 
@@ -80,8 +84,7 @@ class AjaxController extends Controller
         // }
 
 
-        // return response(['user' => $request]);
-        // dd($request->tes);
+        // return response(['data' => $data]);        
         // return csrf_token();
         return response(['status' => 200, 'message' => 'Upload successfully'], 200);
     }

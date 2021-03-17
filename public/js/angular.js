@@ -1,6 +1,7 @@
 var app = angular.module('app', [],['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.post['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content')
 }]);
+
 // app.controller('controller', function ($scope) {    
 app.controller('controller',  ['$scope', '$http', function ($scope, $http) {    
     $scope.input = [
@@ -15,7 +16,7 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
             alasan : '',
             foto : '',
             bukti : '',
-            riwayat : []
+            riwayat : [],            
         },
         {
             email : '',
@@ -161,6 +162,7 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
 
     
     $scope.selectedRiwayat = []
+    $scope.selectedRiwayatLabel = []
     
     $scope.onFileSelected = ($files, $row) => {        
         angular.forEach($files, function (value, key) {
@@ -175,56 +177,76 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
     }
     
     $scope.changeSelection = () => {
-        $scope.fetchSelectedItems()
+        $scope.fetchSelectedRiwayat()
+        $scope.getSelectedRiwayatLabel()
     }
 
     $scope.fetchSelectedRiwayat = () => {
         for (let index = 0; index < $scope.riwayat.length; index++) {
             $scope.selectedRiwayat[index] = $scope.riwayat[index].filter((value, i) => {
                 return value.isChecked
-            })            
+            })   
         }        
+    }
+
+    $scope.getSelectedRiwayatLabel = () => {    
+        for (let index = 0; index < $scope.jumlahorang.length; index++) {            
+            $scope.selectedRiwayatLabel[index] = $scope.selectedRiwayat[index].map((value) => {
+                return value.label
+            })   
+        }    
     }
     
     $scope.processForm = () => {                
         $scope.fetchSelectedRiwayat()
         for (let index = 0; index < $scope.jumlahorang.length; index++) {
-            $scope.input[index].riwayat = $scope.selectedRiwayat[index]            
+            $scope.input[index].riwayat = $scope.selectedRiwayat[index]
         }
-        console.log($scope.input)
+        // console.log($scope.input)
 
         // send data post
-        // var formData = new FormData()
-        // for (let i = 0; i < $scope.jumlahorang.length; i++) {
-        //     formData.append('email[]', $scope.input[i].email)
-        //     formData.append('nama[]', $scope.input[i].nama)
-        //     formData.append('telp[]', $scope.input[i].telp)
-        //     formData.append('tanggal_lahir[]', $scope.input[i].tanggal_lahir)
-        //     formData.append('jenis_kelamin[]', $scope.input[i].jenis_kelamin)
-        //     formData.append('pelatih[]', $scope.input[i].pelatih)
-        //     formData.append('alasan[]', $scope.input[i].alasan)
-        //     formData.append('alamat[]', $scope.input[i].alamat)
-        //     formData.append('foto[]', $scope.input[i].foto)
-        //     formData.append('bukti[]', $scope.input[i].bukti)
-        //     formData.append('riwayat[]', $scope.input[i].riwayat)
-        // }
+        var formData = new FormData()
+        for (let i = 0; i < $scope.jumlahorang.length; i++) {
+            formData.append('email[]', $scope.input[i].email)
+            formData.append('nama[]', $scope.input[i].nama)
+            formData.append('telp[]', $scope.input[i].telp)
+            formData.append('tanggal_lahir[]', $scope.input[i].tanggal_lahir)
+            formData.append('jenis_kelamin[]', $scope.input[i].jenis_kelamin)
+            formData.append('pelatih[]', $scope.input[i].pelatih)
+            formData.append('alasan[]', $scope.input[i].alasan)
+            formData.append('alamat[]', $scope.input[i].alamat)
+            formData.append('foto[]', $scope.input[i].foto)
+            formData.append('bukti[]', $scope.input[i].bukti)
+            formData.append('riwayat[]', $scope.input[i].riwayat)
+        }
 
-        // var request = {
-        //     method: 'POST',
-        //     url: '/pendaftaran',
-        //     data: formData,
-        //     headers: {
-        //         'Content-Type': undefined
-        //     }
-        // }
+        // console.log (formData)
+        for (var pair of formData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]); 
+        }        
 
-        // $http(request)
-        //     .then(function success(e) {
-        //         console.log(e.data)
-        //         alert("Terima kasih telah mendaftar")
-        //     }, function error(e) {
-        //         console.error(e.data)
-        //     })
+        var request = {
+            method: 'POST',
+            url: '/pendaftaran',
+            data: formData,
+            headers: {
+                'Content-Type': 'Application/json',                
+            },
+            transformResponse: [
+                function (data) {
+                    return data
+                }
+            ]
+        }        
+
+        $http(request)
+            .then(function (response) {
+                console.log(response)
+                alert("Terima kasih telah mendaftar")
+            }, function (error) {
+                console.error(error)
+            })        
+        
     }
 
     $scope.firstName = "John";
