@@ -2,6 +2,7 @@
 @section('content')
 <section class="container mt-5" style="height: 100%">
     <form ng-submit="processForm()" ng-controller="controller" id="form" name="form">        
+        @csrf
         <div class="card shadow-sm mb-5">
             <div class="card-body">
                 <h4 class="mb-5">Formulir Pendaftaran</h4>
@@ -89,14 +90,14 @@
                             </div>
                             <div class="mb-3">
                                 <label for="foto@" class="form-label">Unggah Foto Anda</label>
-                                <input class="form-control" ng-model="input[row].foto" style="padding-top: 12px;padding-left: 20px" type="file" id="foto" placeholder="coba" ng-change="onFileSelected($event.target.files)">
+                                <input class="form-control" ng-model="input[row].foto" style="padding-top: 12px;padding-left: 20px" type="file" id="foto" placeholder="coba" ng-files="onFileSelected($files,row)">
                                 <div class="text-right">
                                     <small class="text-muted">Max. 2MB</small>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="bukti" class="form-label">Unggah Bukti Pembayaran</label>
-                                <input class="form-control" ng-model="input[row].bukti" style="padding-top: 12px;padding-left: 20px" type="file" id="bukti" placeholder="coba">
+                                <input class="form-control" ng-model="input[row].bukti" style="padding-top: 12px;padding-left: 20px" type="file" id="bukti" placeholder="coba" ng-files="onBuktiSelected($files,row)">
                                 <div class="text-right">
                                     <small class="text-muted">Max. 2MB</small>
                                 </div>

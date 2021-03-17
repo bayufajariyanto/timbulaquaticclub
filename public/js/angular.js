@@ -1,28 +1,31 @@
-var app = angular.module('app', []);
-app.controller('controller', function ($scope) {    
+var app = angular.module('app', [],['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.headers.post['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content')
+}]);
+// app.controller('controller', function ($scope) {    
+app.controller('controller',  ['$scope', '$http', function ($scope, $http) {    
     $scope.input = [
         {
-            email : 'asd@gmail.com',
-            nama : 'asd',
-            telp : '0987',
+            email : '',
+            nama : '',
+            telp : '',
             tanggal_lahir : '',
             jenis_kelamin : '',
-            alamat : 'malang',
+            alamat : '',
             pelatih : '',
-            alasan : 'asd',
+            alasan : '',
             foto : '',
             bukti : '',
             riwayat : []
         },
         {
-            email : 'tes@gmail.com',
-            nama : 'tes',
-            telp : '765',
+            email : '',
+            nama : '',
+            telp : '',
             tanggal_lahir : '',
             jenis_kelamin : '',
-            alamat : 'turen',
+            alamat : '',
             pelatih : '',
-            alasan : 'qwe',
+            alasan : '',
             foto : '',
             bukti : '',
             riwayat : []
@@ -159,8 +162,16 @@ app.controller('controller', function ($scope) {
     
     $scope.selectedRiwayat = []
     
-    $scope.onFileSelected = (event) => {        
-        $scope.input.foto = event[0]        
+    $scope.onFileSelected = ($files, $row) => {        
+        angular.forEach($files, function (value, key) {
+            $scope.input[$row].foto = value
+        })
+    }
+
+    $scope.onBuktiSelected = ($files, $row) => {        
+        angular.forEach($files, function (value, key) {
+            $scope.input[$row].bukti = value
+        })
     }
     
     $scope.changeSelection = () => {
@@ -177,10 +188,43 @@ app.controller('controller', function ($scope) {
     
     $scope.processForm = () => {                
         $scope.fetchSelectedRiwayat()
-        for (let index = 0; index < $scope.tes.length; index++) {
+        for (let index = 0; index < $scope.jumlahorang.length; index++) {
             $scope.input[index].riwayat = $scope.selectedRiwayat[index]            
         }
         console.log($scope.input)
+
+        // send data post
+        // var formData = new FormData()
+        // for (let i = 0; i < $scope.jumlahorang.length; i++) {
+        //     formData.append('email[]', $scope.input[i].email)
+        //     formData.append('nama[]', $scope.input[i].nama)
+        //     formData.append('telp[]', $scope.input[i].telp)
+        //     formData.append('tanggal_lahir[]', $scope.input[i].tanggal_lahir)
+        //     formData.append('jenis_kelamin[]', $scope.input[i].jenis_kelamin)
+        //     formData.append('pelatih[]', $scope.input[i].pelatih)
+        //     formData.append('alasan[]', $scope.input[i].alasan)
+        //     formData.append('alamat[]', $scope.input[i].alamat)
+        //     formData.append('foto[]', $scope.input[i].foto)
+        //     formData.append('bukti[]', $scope.input[i].bukti)
+        //     formData.append('riwayat[]', $scope.input[i].riwayat)
+        // }
+
+        // var request = {
+        //     method: 'POST',
+        //     url: '/pendaftaran',
+        //     data: formData,
+        //     headers: {
+        //         'Content-Type': undefined
+        //     }
+        // }
+
+        // $http(request)
+        //     .then(function success(e) {
+        //         console.log(e.data)
+        //         alert("Terima kasih telah mendaftar")
+        //     }, function error(e) {
+        //         console.error(e.data)
+        //     })
     }
 
     $scope.firstName = "John";
@@ -282,8 +326,21 @@ app.controller('controller', function ($scope) {
         $scope.jumlahorang = array
         console.log($scope.jumlahorang)
     }
-}).filter('trustHtml', function ($sce) {
+}]).filter('trustHtml', function ($sce) {
     return function (html) {
         return $sce.trustAsHtml(html)
     }
 });
+
+app.directive('ngFiles', ['$parse', function ($parse) {
+    function file_links(scope, element, attrs) {
+        var onChange = $parse(attrs.ngFiles);
+        element.on('change', function (event) {
+            onChange(scope, {$files: event.target.files})
+        })
+    }
+
+    return {
+        link: file_links
+    }
+}])
