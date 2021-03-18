@@ -53,12 +53,11 @@ class AdministratorController extends Controller
     public function destroy_pendaftaran($id)
     {
         $data = Student::find($id);        
-        // $foto_path = storage_path('app/public/upload/img/atlit/'.$data->foto);
-        // $bukti_path = storage_path('app/public/upload/img/bukti/'.$data->bukti);
-        // if (File::exists($foto_path) && File::exists($bukti_path)) {
-        //     File::delete([$foto_path, $bukti_path]);
-            
-        // }        
+        $foto_path = storage_path('app/public/upload/img/atlit/'.$data->foto);
+        $bukti_path = storage_path('app/public/upload/img/bukti/'.$data->bukti);
+        if (File::exists($foto_path) && File::exists($bukti_path)) {
+            File::delete([$foto_path, $bukti_path]);            
+        }        
         $data->delete();
         
         return redirect()->route('pendaftaran.index')->with('message', 'Berhasil menghapus pendaftaran');
