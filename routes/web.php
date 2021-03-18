@@ -23,6 +23,8 @@ Route::get('/pertanyaan', 'AdministratorController@pertanyaan')->name('pertanyaa
 Route::name('pendaftaran.')->prefix('/pendaftaran')->group(function() {
     Route::get('/', 'AdministratorController@pendaftaran')->name('index');
     Route::get('/detail/{id}', 'AdministratorController@detail_pendaftaran')->name('detail');
+    Route::get('/acc/{id}', 'AdministratorController@acc_pendaftaran')->name('acc');
+    Route::get('/destroy/{id}', 'AdministratorController@destroy_pendaftaran')->name('destroy');
 });
 // Route::get('/laporan', 'AdministratorController@laporan')->name('laporan');
 Route::name('laporan.')->prefix('/laporan')->group(function() {

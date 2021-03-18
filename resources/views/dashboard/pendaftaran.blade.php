@@ -1,4 +1,16 @@
 @extends('layouts.dashboard')
+@if (session('message'))
+    @section('alert')
+    <div class="row" id="proBanner">
+        <div class="col-12">
+            <span class="d-flex align-items-center purchase-popup">
+            <p>{{ session('message') }}</p>
+            <i class="mdi mdi-close ml-auto" id="bannerClose"></i>
+            </span>
+        </div>
+    </div>
+    @endsection
+@endif
 @section('breadcumb')
 <div class="page-header">
     <h3 class="page-title">
@@ -20,9 +32,9 @@
     <div class="col-12 grid-margin stretch-card">
     <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Recent Tickets</h4>
+        {{-- <h4 class="card-title">Pendaftaran</h4> --}}
         <div class="table-responsive">
-        <table class="table">
+        <table class="table" id="datatables" style="width: 100%">
             <thead>
             <tr>
                 <th> Nama </th>
@@ -34,7 +46,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            @forelse ($data as $atlit)
+                <tr>
+                    <td>{{ $atlit->nama }}</td>
+                    <td>{{ $atlit->email }}</td>
+                    <td>{{ $atlit->telp }}</td>
+                    <td><img src="{{asset('storage/upload/img/atlit/'.$atlit->foto)}}" alt="image"></td>
+                    {{-- <td><img src="{{asset('storage/upload/img/bukti/'.$atlit->bukti)}}" alt="image"></td> --}}
+                    <td><a class="btn btn-info btn-sm" href="{{asset('storage/upload/img/bukti/'.$atlit->bukti)}}" target="_blank">Lihat Bukti Transfer</a></td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="{{route('pendaftaran.detail', ['id' => $atlit->id])}}">Detail</a>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td>Data tidak ditemukan</td>
+                </tr>
+            @endforelse
+            {{-- <tr>
                 <td> David Grey </td>
                 <td> david@gmail.com </td>
                 <td> 08277366 </td>
@@ -45,43 +74,7 @@
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{route('pendaftaran.detail', ['id' => 1])}}">Detail</a>
                 </td>
-            </tr>
-            <tr>
-                <td> Stella Johnson </td>
-                <td> Stella@gmail.com </td>
-                <td> 08277366 </td>
-                <td> <img src="{{asset('assets/images/faces/face2.jpg')}}" alt="image"> </td>
-                <td> 
-                    <a class="btn btn-info btn-sm" href="#">Lihat Bukti Transfer</a>     
-                </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="{{route('pendaftaran.detail', ['id' => 1])}}">Detail</a>
-                </td>
-            </tr>
-            <tr>
-                <td> Marina Michel </td>
-                <td> marina@gmail.com </td>
-                <td> 08277366 </td>
-                <td> <img src="{{asset('assets/images/faces/face3.jpg')}}" alt="image"> </td>
-                <td> 
-                    <a class="btn btn-info btn-sm" href="#">Lihat Bukti Transfer</a>     
-                </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="{{route('pendaftaran.detail', ['id' => 1])}}">Detail</a>
-                </td>
-            </tr>
-            <tr>
-                <td> John Doe </td>
-                <td> john@gmail.com </td>
-                <td> 08277366 </td>
-                <td> <img src="{{asset('assets/images/faces/face4.jpg')}}" class="mr-2" alt="image"> </td>
-                <td> 
-                    <a class="btn btn-info btn-sm" href="#">Lihat Bukti Transfer</a>     
-                </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="{{route('pendaftaran.detail', ['id' => 1])}}">Detail</a>
-                </td>
-            </tr>            
+            </tr>                        --}}
             </tbody>
         </table>
         </div>
