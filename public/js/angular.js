@@ -16,7 +16,7 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
             alasan : '',
             foto : '',
             bukti : '',
-            riwayat : [],            
+            riwayat : []            
         },
         {
             email : '',
@@ -160,7 +160,7 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
         ]        
     ]
 
-    
+    $scope.paket = []
     $scope.selectedRiwayat = []
     $scope.selectedRiwayatLabel = []
     
@@ -225,27 +225,27 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
             console.log(pair[0]+ ', ' + pair[1]); 
         }        
 
-        var request = {
-            method: 'POST',
-            url: '/pendaftaran',
-            data: formData,
-            headers: {
-                'Content-Type': 'Application/json',                
-            },
-            transformResponse: [
-                function (data) {
-                    return data
-                }
-            ]
-        }        
+        // var request = {
+        //     method: 'POST',
+        //     url: '/pendaftaran',
+        //     data: formData,
+        //     headers: {
+        //         'Content-Type': 'Application/json',                
+        //     },
+        //     transformResponse: [
+        //         function (data) {
+        //             return data
+        //         }
+        //     ]
+        // }        
 
-        $http(request)
-            .then(function (response) {
-                console.log(response)
-                alert("Terima kasih telah mendaftar")
-            }, function (error) {
-                console.error(error)
-            })        
+        // $http(request)
+        //     .then(function (response) {
+        //         console.log(response)
+        //         alert("Terima kasih telah mendaftar")
+        //     }, function (error) {
+        //         console.error(error)
+        //     })        
         
     }
 
@@ -255,27 +255,32 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
         {
             nama: "1. Kelas Privat",
             desc: "<br><span class='text-danger highlight'>*</span>Tiket kolam bayar sendiri di Loket / Kasir.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono, Kolam Renang Katak Riang, Kolam Renang Millenium.<br><span class='text-danger highlight'>*</span>Jadwal bisa menyesuaikan dengan Pelatih.",
-            icon: "mdi mdi-cube-outline"
+            icon: "mdi mdi-cube-outline",
+            value: "Kelas Privat"
         },
         {
             nama: "2. Paket Privat",
             desc: "<br><span class='text-danger highlight'>*</span>Tiket kolam bayar sendiri di Loket / Kasir.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono, Kolam Renang Katak Riang, Kolam Renang Millenium.<br><span class='text-danger highlight'>*</span>Jadwal bisa menyesuaikan dengan Pelatih.",
-            icon: "mdi mdi-wallet-giftcard"
+            icon: "mdi mdi-wallet-giftcard",
+            value: "Paket Privat"
         },
         {
             nama: "3. Kelas Anak Berkebutuhan Khusus/Terapi",
             desc: "<br><span class='text-danger highlight'>*</span>Untuk murid baru wajib membayar Biaya Pendaftaran (50k).<br><span class='text-danger highlight'>*</span>Sudah Termasuk Tiket Kolam.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1,5 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono, Kolam Renang Katak Riang, Kolam Renang Millenium.<br><span class='text-danger highlight'>*</span>Jadwal bisa menyesuaikan dengan Pelatih.",
-            icon: "fas fa-child"
+            icon: "fas fa-child",
+            value: "Kelas Anak Berkebutuhan Khusus/Terapi"
         },
         {
             nama: "4. Kelas Pemula",
             desc: "<br><span class='text-danger highlight'>*</span>Untuk murid baru wajib membayar Biaya Pendaftaran (50k).<br><span class='text-danger highlight'>*</span>Sudah Termasuk Tiket Kolam.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1,5 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono dan Kolam Renang Katak Riang.<br><span class='text-danger highlight'>*</span>Jadwal Setiap Hari Senin dan Sabtu Pukul 06.00-09.00 AM.",
-            icon: "fas fa-baby"
+            icon: "fas fa-baby",
+            value: "Kelas Pemula"
         },
         {
             nama: "5. Kelas Prestasi/Selam",
             desc: "<br><span class='text-danger highlight'>*</span>Wajib Bisa 4 gaya.<br><span class='text-danger highlight'>*</span>Untuk murid baru wajib membayar Biaya Pendaftaran (50k).<br><span class='text-danger highlight'>*</span>Sudah Termasuk Tiket Kolam.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1,5 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono dan Kolam Renang Katak Riang.<br><span class='text-danger highlight'>*</span>Jadwal Akan disampaikan setelah mendaftar.",
-            icon: "mdi mdi-trophy"
+            icon: "mdi mdi-trophy",
+            value: "Kelas Prestasi/Selam"
         }
     ]
     $scope.jumlah = [
@@ -338,6 +343,7 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
     $scope.gantiProgram = () => {
         $scope.isForm = false
         $scope.form.orang = $scope.jumlah[$scope.form.paket]
+        $scope.paket.program = $scope.programs[$scope.form.paket].value;
     }
     $scope.gantiOrang = () => {
         $scope.isForm = true
@@ -347,6 +353,7 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
         }
         $scope.jumlahorang = array
         console.log($scope.jumlahorang)
+        $scope.paket.jumlah = $scope.jumlah[$scope.form.paket][$scope.form.orang-1].nama
     }
 }]).filter('trustHtml', function ($sce) {
     return function (html) {

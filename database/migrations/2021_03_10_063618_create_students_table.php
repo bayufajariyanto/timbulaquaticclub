@@ -24,6 +24,8 @@ class CreateStudentsTable extends Migration
             $table->string('pelatih');
             $table->string('foto');
             $table->string('bukti');
+            $table->string('program');
+            $table->string('jumlah');
             $table->string('riwayat')->nullable();
             $table->string('alasan')->nullable();
             $table->boolean('isapproved')->default(0);

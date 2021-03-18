@@ -1,7 +1,17 @@
 @extends('layout.landing_template')
 @section('content')
 <section class="container mt-5" style="height: 100%">
-    {{-- <form ng-submit="processForm()" ng-controller="controller" id="form" name="form">                         --}}
+    @if (session('message'))        
+        <div class="alert bg-gradient-success alert-dismissible fade show" role="alert">
+            <font size="2">
+            {{ session('message') }}
+            {{-- Berhasil mendaftarkan akun --}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </font>
+        </div>
+    @endif    
     <form action="{{route('pendaftaran')}}" method="POST" ng-controller="controller" id="form" name="form" enctype="multipart/form-data">                        
         <div class="card shadow-sm mb-5">
             <div class="card-body">                                
@@ -145,13 +155,15 @@
                             <div class="form-floating mb-5">
                                 <textarea class="form-control" placeholder="Tuliskan alasan anda" id="alasan" ng-model="input[row].alasan" style="height: 100px" name="alasan[]"></textarea>
                                 <label for="alasan">Alasan Belajar Renang</label>
-                            </div>
+                            </div>                                 
+                            <input type="hidden" name="program[]" value="@{{paket.program}}">
+                            <input type="hidden" name="jumlah[]" value="@{{paket.jumlah}}">
                         </div>
                     </div>  
                 </div>
             </div>
         </div>
-        <div class="container" ng-show="isForm">
+        <div class="container" ng-show="isForm">            
             <button class="btn btn-block btn-success" type="submit">Daftar!</button>
         </div>
                     

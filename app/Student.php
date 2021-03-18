@@ -16,6 +16,8 @@ class Student extends Model
         'pelatih',
         'foto',
         'bukti',
+        'program',
+        'jumlah',
         'riwayat',
         'alasan'
     ];

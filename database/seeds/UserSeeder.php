@@ -20,13 +20,15 @@ class UserSeeder extends Seeder
         $admin->roles = "Admin";
         $admin->save();
 
-        $this->command->info("Admin berhasil ditambahkan!");
-
+        $this->command->info("Guru berhasil ditambahkan!");
+        
         $student = new User();
         $student->name = "murid";
         $student->email = "murid@gmail.com";
         $student->password = Hash::make("murid");
         $student->roles = "Student";
         $student->save();
+
+        $this->command->info("Atlit berhasil ditambahkan!");
     }
 }

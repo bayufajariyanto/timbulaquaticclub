@@ -44,7 +44,7 @@ Route::name('akun.')->prefix('/akun')->group(function() {
     Route::get('/list/hapus/{id}', 'AkunController@destroy')->name('hapus');
 });
 // Route::get('/nilai', 'MuridController@nilaibyid')->name('murid.nilaibyid');
-Route::get('/daftar', 'LandingPage@daftar');
+Route::get('/daftar', 'LandingPage@daftar')->name('daftar');
 Route::get('/pelatih', 'LandingPage@pelatih');
 Route::get('/tentang', 'LandingPage@tentang');
 Route::get('/lokasi', 'LandingPage@lokasi');
