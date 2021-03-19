@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pertanyaan;
 use App\Student;
 use App\User;
 use Illuminate\Http\Request;
@@ -64,7 +65,16 @@ class AdministratorController extends Controller
 
     public function pertanyaan()
     {
-        return view('dashboard.pertanyaan');
+        $data = Pertanyaan::all();        
+        return view('dashboard.pertanyaan', ['data' => $data]);
+    }
+
+    public function destroy_pertanyaan($id)
+    {
+        $data = Pertanyaan::find($id);
+        $data->delete();
+
+        return redirect()->route('pertanyaan')->with('message', 'Berhasil menghapus pertanyaan');
     }
 
     public function laporan()

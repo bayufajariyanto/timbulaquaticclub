@@ -20,6 +20,7 @@ Route::get('/tes', function() {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/pertanyaan', 'AdministratorController@pertanyaan')->name('pertanyaan');
+Route::get('/pertanyaan/destroy/{id}', 'AdministratorController@destroy_pertanyaan')->name('pertanyaan.destroy');
 Route::name('pendaftaran.')->prefix('/pendaftaran')->group(function() {
     Route::get('/', 'AdministratorController@pendaftaran')->name('index');
     Route::get('/detail/{id}', 'AdministratorController@detail_pendaftaran')->name('detail');

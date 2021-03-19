@@ -1,4 +1,16 @@
 @extends('layouts.dashboard')
+@if (session('message'))
+    @section('alert')
+    <div class="row" id="proBanner">
+        <div class="col-12">
+            <span class="d-flex align-items-center purchase-popup">
+            <p>{{ session('message') }}</p>
+            <i class="mdi mdi-close ml-auto" id="bannerClose"></i>
+            </span>
+        </div>
+    </div>
+    @endsection
+@endif
 @section('breadcumb')
 <div class="page-header">
     <h3 class="page-title">
@@ -22,7 +34,7 @@
     <div class="card-body">
         {{-- <h4 class="card-title">Recent Tickets</h4> --}}
         <div class="table-responsive">
-        <table class="table">
+        <table class="table" id="datatables">
             <thead>
             <tr>
                 <th> Tanggal </th>
@@ -34,46 +46,22 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td> Dec 5, 2017 </td>
-                <td>David Grey</td>
-                <td>emal@gmail.com</td>
-                <td>0827265</td>
-                <td> Fund is not recieved </td>
-                <td>                     
-                    <a class="btn btn-danger btn-sm" href="#">Delete</a> 
-                </td>
-            </tr>
-            <tr>
-                <td> Dec 12, 2017 </td>
-                <td> Stella Johnson</td>
-                <td>emal@gmail.com</td>
-                <td>0827265</td>
-                <td> High loading time </td>
-                <td>                     
-                    <a class="btn btn-danger btn-sm" href="#">Delete</a> 
-                </td>
-            </tr>
-            <tr>
-                <td> Dec 16, 2017 </td>
-                <td> Marina Michel</td>
-                <td>emal@gmail.com</td>
-                <td>0827265</td>
-                <td> Website down for one week </td>
-                <td>                     
-                    <a class="btn btn-danger btn-sm" href="#">Delete</a> 
-                </td>
-            </tr>        
-            <tr>
-                <td> Dec 3, 2017 </td>
-                <td> John Doe</td>
-                <td>emal@gmail.com</td>
-                <td>0827265</td>
-                <td> Loosing control on server </td>
-                <td>                     
-                    <a class="btn btn-danger btn-sm" href="#">Delete</a> 
-                </td>
-            </tr>                    
+                @forelse ($data as $pertanyaan)
+                <tr>
+                    <td>{{$pertanyaan->tanggal}}</td>
+                    <td>{{$pertanyaan->nama}}</td>
+                    <td>{{$pertanyaan->email}}</td>
+                    <td>{{$pertanyaan->telp}}</td>
+                    <td class="text-wrap">{{$pertanyaan->pesan}}</td>
+                    <td>                     
+                        <a class="btn btn-danger btn-sm" href="{{route('pertanyaan.destroy', ['id' => $pertanyaan->id])}}">Delete</a> 
+                    </td>
+                </tr>                    
+                @empty
+                <tr>
+                    <td>Data tidak ditemukan</td>
+                </tr>
+                @endforelse            
             </tbody>
         </table>
         </div>
