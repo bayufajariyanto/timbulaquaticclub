@@ -51,29 +51,29 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-5 form-floating">
-                                <input type="email" class="form-control" id="email" ng-model="input[row].email" placeholder="nama@contoh.com" name="email[]">
+                                <input type="email" class="form-control" id="email" ng-model="input[row].email" placeholder="nama@contoh.com" name="email[]" required>
                                 <label for="email" class="form-label">Email</label>
                             </div>
                             <div class="mb-5 form-floating">
-                                <input type="text" class="form-control" id="nama" ng-model="input[row].nama" placeholder="Nama Lengkap" name="nama[]">
+                                <input type="text" class="form-control" id="nama" ng-model="input[row].nama" placeholder="Nama Lengkap" name="nama[]" required>
                                 <label for="nama" class="form-label">Nama Lengkap</label>
                             </div>
                             <div class="mb-5 form-floating">
-                                <input type="text" class="form-control" id="telp" ng-model="input[row].telp" placeholder="Nomor Telp." name="telp[]">
+                                <input type="text" class="form-control" id="telp" ng-model="input[row].telp" placeholder="Nomor Telp." name="telp[]" required>
                                 <label for="telp" class="form-label">Nomor Telepon/HP (WhatsApp)</label>
                             </div>
                             <div class="mb-5 form-floating">
-                                <input type="date" class="form-control" id="tanggal_lahir" ng-model="input[row].tanggal_lahir" placeholder="Tanggal Lahir" name="tanggal_lahir[]">
+                                <input type="date" class="form-control" id="tanggal_lahir" ng-model="input[row].tanggal_lahir" placeholder="Tanggal Lahir" name="tanggal_lahir[]" required>
                                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                             </div>
                             <div class="form-floating mb-5">
-                                <textarea class="form-control" placeholder="Alamat" id="alamat" ng-model="input[row].alamat" style="height: 100px" name="alamat[]"></textarea>
+                                <textarea class="form-control" placeholder="Alamat" id="alamat" ng-model="input[row].alamat" style="height: 100px" name="alamat[]" required></textarea>
                                 <label for="alamat">Alamat</label>
                             </div>
                             <div class="mb-5">
                                 <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label><br>
                                 <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" ng-model="input[row].jenis_kelamin" id="laki@{{row}}" value="laki">
+                                    <input type="radio" class="form-check-input" ng-model="input[row].jenis_kelamin" id="laki@{{row}}" value="laki" required>
                                     <label class="form-check-label" for="laki@{{row}}">Laki-laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -87,7 +87,7 @@
                             <div class="mb-5">
                                 <label for="pelatih" class="form-label">Pelatih</label><br>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" ng-model="input[row].pelatih" id="pelatihlaki@{{row}}" value="laki">
+                                    <input class="form-check-input" type="radio" ng-model="input[row].pelatih" id="pelatihlaki@{{row}}" value="laki" required>
                                     <label class="form-check-label" for="pelatihlaki@{{row}}">Laki-laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -102,14 +102,14 @@
                             </div>
                             <div class="mb-3">
                                 <label for="foto@" class="form-label">Unggah Foto Anda</label>
-                                <input class="form-control" ng-model="input[row].foto" style="padding-top: 12px;padding-left: 20px" type="file" id="foto" placeholder="coba" ng-files="onFileSelected($files,row)" name="foto[]">
+                                <input class="form-control" ng-model="input[row].foto" style="padding-top: 12px;padding-left: 20px" type="file" id="foto" placeholder="coba" ng-files="onFileSelected($files,row)" name="foto[]" required>
                                 <div class="text-right">
                                     <small class="text-muted">Max. 2MB</small>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="bukti" class="form-label">Unggah Bukti Pembayaran</label>
-                                <input class="form-control" ng-model="input[row].bukti" style="padding-top: 12px;padding-left: 20px" type="file" id="bukti" placeholder="coba" ng-files="onBuktiSelected($files,row)" name="bukti[]">
+                                <input class="form-control" ng-model="input[row].bukti" style="padding-top: 12px;padding-left: 20px" type="file" id="bukti" placeholder="coba" ng-files="onBuktiSelected($files,row)" name="bukti[]" required>
                                 <div class="text-right">
                                     <small class="text-muted">Max. 2MB</small>
                                 </div>

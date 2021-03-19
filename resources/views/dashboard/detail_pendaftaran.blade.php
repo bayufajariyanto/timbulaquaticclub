@@ -4,7 +4,12 @@
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-clipboard-account"></i>
-        </span> <a href="{{ route('pendaftaran.index') }}">Pendaftaran</a> / Detail
+        @if (!$data->isapproved)            
+            </span> <a href="{{ route('pendaftaran.index') }}">Pendaftaran</a>
+        @else
+            </span> <a href="{{ route('murid.list') }}">List Atlit</a>
+        @endif
+         / Detail
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
@@ -84,6 +89,7 @@
                 </h5>
                 <img src="{{asset('storage/upload/img/bukti/'.$data->bukti)}}" class="img-thumbnail" alt="image"><br>
                 <a class="btn btn-gradient-info btn-sm mt-2" href="{{asset('storage/upload/img/bukti/'.$data->bukti)}}" target="_blank"><span class="mdi mdi-image-filter-none">&nbsp;&nbsp;Lihat di Tab Baru</span></a><br>                
+                @if (!$data->isapproved)                    
                 <h4 class="card-title mt-5">Aksi</h4>                
                 <a class="btn btn-gradient-success" href="{{route('pendaftaran.acc', ['id' => $data->id])}}">
                     <span class="mdi mdi-content-save"> Terima</span>
@@ -91,6 +97,7 @@
                 <a class="btn btn-gradient-danger" href="{{route('pendaftaran.destroy', ['id' => $data->id])}}">
                     <span class="mdi mdi-delete"> Tolak</span>
                 </a>
+                @endif
             </div>
             <div class="col-md-4 mb-5">            
                 <img src="{{asset('storage/upload/img/atlit/'.$data->foto)}}" class="img-thumbnail mr-2" alt="image">

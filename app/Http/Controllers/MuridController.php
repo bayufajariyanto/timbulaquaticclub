@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
 class MuridController extends Controller
@@ -17,7 +19,29 @@ class MuridController extends Controller
     }
 
     public function list(){
-        return view('murid.list');
+        // $data = User::where('roles', 'Student')
+        //     ->orderByDesc('id')
+        //     ->get();
+        $data = DB::table('users as u')
+                ->select(
+                    's.id',
+                    's.email',
+                    's.nama', 
+                    's.telp', 
+                    's.tanggal_lahir', 
+                    's.alamat', 
+                    's.jenis_kelamin', 
+                    's.pelatih', 
+                    's.foto', 
+                    's.bukti',
+                    's.program',
+                    's.jumlah',
+                    's.riwayat',
+                    's.alasan'
+                )
+                ->join('students as s', 'u.email', '=', 's.email')
+                ->get();                
+        return view('murid.list', ['data' => $data]);
     }    
 
     public function add(){

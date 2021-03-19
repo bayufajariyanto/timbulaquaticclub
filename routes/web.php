@@ -42,6 +42,8 @@ Route::name('akun.')->prefix('/akun')->group(function() {
     Route::get('/tambah', 'AkunController@add')->name('tambah');
     Route::post('/store', 'AkunController@store')->name('store');
     Route::get('/list/edit/{id}', 'AkunController@edit')->name('edit');
+    Route::get('/password', 'HomeController@edit_password')->name('editpassword');
+    Route::post('/password/update', 'HomeController@update_password')->name('updatepassword');
     Route::post('/update', 'AkunController@update')->name('update');
     Route::get('/list/hapus/{id}', 'AkunController@destroy')->name('hapus');
 });

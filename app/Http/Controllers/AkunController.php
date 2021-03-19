@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -59,7 +60,7 @@ class AkunController extends Controller
         $user->save();
 
         return redirect()->route('akun.list')->with('message', 'Berhasil menambahkan data akun');
-    }
+    }    
 
     public function edit($id)
     {
@@ -93,7 +94,7 @@ class AkunController extends Controller
         $user->save();
 
         return redirect()->route('akun.list')->with('message', 'Berhasil mengubah data akun');
-    }
+    }    
     
     public function destroy($id)
     {

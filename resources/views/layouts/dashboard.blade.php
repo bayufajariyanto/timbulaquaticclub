@@ -47,8 +47,8 @@
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="#">
-                    <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
+                    <a class="dropdown-item" href="{{route('akun.editpassword')}}">
+                    <i class="mdi mdi-cached mr-2 text-success"></i> Ubah Password </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
