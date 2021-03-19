@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="./assets/images/icon.ico" type="image/x-icon">
+    {{-- SEO --}}
+    <meta property="og:title" content="Kursus renang professional. Berkembang bersama kami | Timbul Aquatic Club">
+    <meta property="og:site_name" content="Timbul Aquatic Club">
+    <meta property="og:description" content="Berenang terasa mudah dan menyenangkan bersama kami. Kursus paling terpercaya di Jawa Timur.">
+    {{-- <meta property="og:url" content="https://www.tokopedia.com" data-rh="true"> Menyusul --}}
     <!-- Template by bootstrapdash.com -->
     <title>Timbul Aquatic Club</title>
     <!-- Vendor css -->
