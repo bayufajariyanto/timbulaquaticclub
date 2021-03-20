@@ -132,13 +132,21 @@
                             <i class="mdi mdi-account-multiple-plus menu-icon"></i>
                         </a>
                     </li> --}}
-                    @endcan                
-                    <li class="nav-item {{ Route::is('murid.nilai') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('murid.nilai') }}">
-                            <span class="menu-title">Rapor</span>
-                            <i class="mdi mdi-chart-bar menu-icon"></i>
-                        </a>                    
-                    </li>
+                <li class="nav-item {{ Route::is('rapor.list') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('rapor.list') }}">
+                        <span class="menu-title">Rapor</span>
+                        <i class="mdi mdi-chart-bar menu-icon"></i>
+                    </a>                    
+                </li>
+                @endcan           
+                @can('display-nilai')                        
+                <li class="nav-item {{ Route::is('murid.nilai') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('murid.nilai') }}">
+                        <span class="menu-title">Rapor</span>
+                        <i class="mdi mdi-chart-bar menu-icon"></i>
+                    </a>                    
+                </li>
+                @endcan
                 </ul>
             </nav>
             <!-- partial -->

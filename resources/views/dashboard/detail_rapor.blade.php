@@ -4,7 +4,7 @@
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-file-document"></i>
-        </span> Laporan / Detail
+        </span> <a href="{{route('rapor.list')}}">List Rapor</a> / Detail
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">

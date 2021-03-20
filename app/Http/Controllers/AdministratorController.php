@@ -103,10 +103,15 @@ class AdministratorController extends Controller
                 ->get();
         return view('dashboard.laporan', ['atlit' => $atlit, 'data' => $data]);
     }
-
-    public function detail_laporan()
+    
+    public function rapor()
     {
-        return view('dashboard.detail_laporan');
+        return view('dashboard.rapor');
+    }
+
+    public function detail_rapor($id)
+    {
+        return view('dashboard.detail_rapor');
     }
 
     public function store_laporan(Request $request)
