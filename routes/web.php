@@ -32,6 +32,9 @@ Route::name('laporan.')->prefix('/laporan')->group(function() {
     Route::get('/', 'AdministratorController@laporan')->name('list');
     Route::get('/detail', 'AdministratorController@detail_laporan')->name('detail');
     Route::post('/store', 'AdministratorController@store_laporan')->name('store');
+    Route::get('/edit/{id}', 'AdministratorController@edit_laporan')->name('edit');
+    Route::post('/update', 'AdministratorController@update_laporan')->name('update');
+    Route::get('/destroy/{id}', 'AdministratorController@destroy_laporan')->name('destroy');    
 });
 Route::name('murid.')->prefix('/atlit')->group(function() {
     Route::get('/list', 'MuridController@list')->name('list');

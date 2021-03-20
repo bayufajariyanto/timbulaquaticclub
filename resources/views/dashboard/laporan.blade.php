@@ -1,4 +1,16 @@
 @extends('layouts.dashboard')
+@if (session('message'))
+    @section('alert')
+    <div class="row" id="proBanner">
+        <div class="col-12">
+            <span class="d-flex align-items-center purchase-popup">
+            <p>{{ session('message') }}</p>
+            <i class="mdi mdi-close ml-auto" id="bannerClose"></i>
+            </span>
+        </div>
+    </div>
+    @endsection
+@endif
 @section('breadcumb')
 <div class="page-header">
     <h3 class="page-title">
@@ -20,73 +32,71 @@
                     <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Akun</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Nilai</h5>
                             <div class="py-2 mr-3">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                        </div>
-                        <form action="{{ route('laporan.store') }}" method="POST">
+                        </div>                        
+                        <form action="{{ route('laporan.store') }}" method="POST" id="inputnilai">
                             @csrf
                             <div class="modal-body bg-white">
                                 <div class="form-group">
                                     <label for="tanggal">Tanggal</label>
-                                    <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="DD-MM-YYYY">
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="DD-MM-YYYY" required>
                                 </div>                                       
                                 <div class="form-group">
-                                    <label for="murid">Nama Murid</label>                                    
-                                    <select class="form-control" id="murid" name="idmurid">
-                                        <option value="1">David Grey</option>
-                                        <option value="2">Stella Johnson</option>
-                                        <option value="3">Marian Michel</option>
-                                        <option value="4">Jon Doe</option>
-                                        <option value="5">David Monroe</option>
+                                    <label for="murid">Nama Murid</label>
+                                    <select class="form-control" id="murid" name="idmurid" required>
+                                        @foreach ($atlit as $a)                                            
+                                            <option value="{{$a->id}}">{{$a->nama}}</option>
+                                        @endforeach                                        
                                     </select>
                                     {{-- <input type="text" class="form-control" id="murid" name="email" placeholder="Email"> --}}
                                 </div>
                                 <div class="form-group">
                                     <label for="keterangan">Keterangan</label>
-                                    <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan">
+                                    <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" required>
                                 </div>                                       
                                 <div class="form-group">
                                     <label for="gaya">Gaya</label>
-                                    <select class="form-control" id="gaya" name="gaya">
-                                        <option value="1">Free Style (Bebas)</option>
-                                        <option value="2">Breaststroke (Dada)</option>            
-                                        <option value="3">Backstroke (Punggung)</option>
-                                        <option value="4">Butterfly (Kupu-Kupu)</option>
-                                        <option value="5">Gaya Ganti</option>
-                                        <option value="6">Surface</option>
-                                        <option value="7">Biffins</option>
+                                    <select class="form-control" id="gaya" name="gaya" required>
+                                        <option value="Free Style (Bebas)">Free Style (Bebas)</option>
+                                        <option value="Breaststroke (Dada)">Breaststroke (Dada)</option>            
+                                        <option value="Backstroke (Punggung)">Backstroke (Punggung)</option>
+                                        <option value="Butterfly (Kupu-Kupu)">Butterfly (Kupu-Kupu)</option>
+                                        <option value="Gaya Ganti">Gaya Ganti</option>
+                                        <option value="Surface">Surface</option>
+                                        <option value="Biffins">Biffins</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="nomor">Nomor</label>
-                                    <select class="form-control" id="nomor" name="nomor">
-                                        <option value="1">100 M</option>
-                                        <option value="2">200 M</option>            
-                                        <option value="3">400 M</option>
-                                        <option value="4">800 M</option>
-                                        <option value="5">1500 M</option>
+                                    <select class="form-control" id="nomor" name="nomor" required>
+                                        <option value="100 M">100 M</option>
+                                        <option value="200 M">200 M</option>            
+                                        <option value="400 M">400 M</option>
+                                        <option value="800 M">800 M</option>
+                                        <option value="1500 M">1500 M</option>
                                     </select>
                                 </div>
                                 <div class="form-row">             
                                     <div class="form-group col-md-3">
                                       <label for="jam">Jam</label>
-                                      <input type="number" class="form-control" id="jam" name="jam" placeholder="00">
+                                      <input type="number" min="0" class="form-control" id="jam" name="jam" placeholder="00" value="00" onchange="zeroLeading(this)" onClick="this.select();">
                                     </div>
                                     <div class="form-group col-md-3">
                                       <label for="menit">Menit</label>
-                                      <input type="number" class="form-control" id="menit" name="menit" placeholder="00">
+                                      <input type="number" min="0" max="59" class="form-control" id="menit" name="menit" placeholder="00" value="00" onchange="zeroLeading(this)" onClick="this.select();">
                                     </div>
                                     <div class="form-group col-md-3">
                                       <label for="detik">Detik</label>
-                                      <input type="number" class="form-control" id="detik" name="detik" placeholder="00">
+                                      <input type="number" min="0" max="59" class="form-control" id="detik" name="detik" placeholder="00" value="00" onchange="zeroLeading(this)" onClick="this.select();">
                                     </div>
                                     <div class="form-group col-md-3">
                                       <label for="milidetik">Milidetik</label>
-                                      <input type="number" class="form-control" id="milidetik" name="milidetik" placeholder="00">
+                                      <input type="number" min="0" max="99" class="form-control" id="milidetik" name="milidetik" placeholder="00" value="00" onchange="zeroLeading(this)" onClick="this.select();">
                                     </div>
                                 </div>                
                                 {{-- <button type="submit" class="btn btn-success">Simpan</button> --}}
@@ -114,63 +124,35 @@
         <table class="table">
             <thead>
             <tr>
-                <th> Assignee </th>
-                <th> Subject </th>
-                <th> Status </th>
-                <th> Last Update </th>
-                <th> Tracking ID </th>
+                <th> Tanggal </th>
+                <th> Atlit </th>
+                <th> Keterangan </th>
+                <th> Gaya </th>
+                <th> Nomor </th>
+                <th> Waktu </th>
                 <th> Aksi </th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>
-                <img src="{{asset('assets/images/faces/face1.jpg')}}" class="mr-2" alt="image"> David Grey
-                </td>
-                <td> Fund is not recieved </td>
-                <td>
-                <label class="badge badge-gradient-success">DONE</label>
-                </td>
-                <td> Dec 5, 2017 </td>
-                <td> WD-12345 </td>
-                <td> <a href="{{route('laporan.detail')}}" class="btn btn-sm btn-info">Detail</a> </td>
-            </tr>
-            <tr>
-                <td>
-                <img src="{{asset('assets/images/faces/face2.jpg')}}" class="mr-2" alt="image"> Stella Johnson
-                </td>
-                <td> High loading time </td>
-                <td>
-                <label class="badge badge-gradient-warning">PROGRESS</label>
-                </td>
-                <td> Dec 12, 2017 </td>
-                <td> WD-12346 </td>
-                <td> <a href="{{route('laporan.detail')}}" class="btn btn-sm btn-info">Detail</a> </td>
-            </tr>
-            <tr>
-                <td>
-                <img src="{{asset('assets/images/faces/face3.jpg')}}" class="mr-2" alt="image"> Marina Michel
-                </td>
-                <td> Website down for one week </td>
-                <td>
-                <label class="badge badge-gradient-info">ON HOLD</label>
-                </td>
-                <td> Dec 16, 2017 </td>
-                <td> WD-12347 </td>
-                <td> <a href="{{route('laporan.detail')}}" class="btn btn-sm btn-info">Detail</a> </td>
-            </tr>
-            <tr>
-                <td>
-                <img src="{{asset('assets/images/faces/face4.jpg')}}" class="mr-2" alt="image"> John Doe
-                </td>
-                <td> Loosing control on server </td>
-                <td>
-                <label class="badge badge-gradient-danger">REJECTED</label>
-                </td>
-                <td> Dec 3, 2017 </td>
-                <td> WD-12348 </td>
-                <td> <a href="{{route('laporan.detail')}}" class="btn btn-sm btn-info">Detail</a> </td>
-            </tr>
+            @forelse ($data as $laporan)                
+                <tr>
+                    <td>{{$laporan->tanggal}}</td>
+                    <td>{{$laporan->name}}</td>
+                    <td>{{$laporan->keterangan}}</td>
+                    <td>{{$laporan->gaya}}</td>
+                    <td>{{$laporan->nomor}}</td>
+                    <td>{{$laporan->waktu}}</td>
+                    {{-- <td> <a href="{{route('laporan.detail')}}" class="btn btn-sm btn-info">Detail</a> </td> --}}
+                    <td> 
+                        <a href="{{route('laporan.edit', ['id' => $laporan->id])}}" class="btn btn-sm btn-info">Edit</a> 
+                        <a href="{{route('laporan.destroy', ['id' => $laporan->id])}}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>                    
+                </tr>
+            @empty
+                <tr>
+                    <td>Data tidak ditemukan</td>
+                </tr>
+            @endforelse            
             </tbody>
         </table>
         </div>
@@ -178,4 +160,12 @@
     </div>
     </div>
 </div>
+@endsection
+@section('footer')
+<script>
+    function zeroLeading(input) {    
+        if(parseInt(input.value,10)<10 && input.value.length === 1)input.value='0'+input.value;
+        if(input.value == '')input.value='00';
+    }    
+</script>
 @endsection

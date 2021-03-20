@@ -18,10 +18,7 @@ class MuridController extends Controller
         });
     }
 
-    public function list(){
-        // $data = User::where('roles', 'Student')
-        //     ->orderByDesc('id')
-        //     ->get();
+    public function list(){        
         $data = DB::table('users as u')
                 ->select(
                     's.id',
