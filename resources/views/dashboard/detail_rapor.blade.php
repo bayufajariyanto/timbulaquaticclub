@@ -28,7 +28,7 @@
             <p>Laki-laki</p>
             <p>Bayu Fajariyanto <span class="badge badge-gradient-primary">Coach</span></p>
             <div class="table-responsive">
-                <table class="table table-bordered table-striped text-center">
+                <table class="table table-bordered text-center">
                     <thead>
                     <tr>
                         <th rowspan="4" class="align-middle"> GAYA </th>

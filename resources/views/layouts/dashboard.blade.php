@@ -38,8 +38,12 @@
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                    <div class="nav-profile-img">
-                    <img src="{{asset('assets/images/faces/face1.jpg')}}" alt="image">
+                    <div class="nav-profile-img">                                  
+                    @if (isset($img) && !empty($img))                                               
+                        <img src="{{asset('storage/upload/img/atlit/'.$img)}}" alt="image">
+                    @else
+                        <img src="{{asset('assets/images/faces/avatar.png')}}" alt="image">
+                    @endif
                     <span class="availability-status online"></span>
                     </div>
                     <div class="nav-profile-text">
