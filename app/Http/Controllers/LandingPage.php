@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pertanyaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 use Symfony\Component\Console\Input\Input;
@@ -46,5 +47,20 @@ class LandingPage extends Controller
     public function simpandaftar(Request $request)
     {
         dd($request->all());
+    }
+
+    public function tanya(Request $request)
+    {
+        $data = $request->all();
+        $tanggal = date('Y-m-d');
+        Pertanyaan::create([
+            'tanggal' => $tanggal,
+            'nama' => $data['nama'],
+            'email' => $data['email'],
+            'telp' => $data['telp'],
+            'pesan' => $data['pertanyaan']
+        ]);
+
+        return redirect(url('/').'#success')->with('message', 'Berhasil mengirimkan pertanyaan');
     }
 }

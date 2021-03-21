@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Nomor;
 use Illuminate\Http\Request;
 use App\Student;
 use Illuminate\Support\Facades\Validator;
@@ -89,5 +90,11 @@ class AjaxController extends Controller
 
         // return response(['status' => 200, 'message' => 'Upload successfully'], 200);
         return redirect()->route('daftar')->with('message', 'Berhasil melakukan pendaftaran');
+    }
+
+    public function nomors($id)
+    {
+        $nomors = Nomor::where('id_gaya',$id)->get();
+        return response()->json(['nomors' => $nomors], 200);
     }
 }

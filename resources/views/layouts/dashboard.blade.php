@@ -82,8 +82,8 @@
                     </a>
                     </li>            
                     @can('manage-administration')                    
-                    <li class="nav-item {{ Route::is('pertanyaan') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('pertanyaan') }}">
+                    <li class="nav-item {{ Route::is('pertanyaan.list') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('pertanyaan.list') }}">
                         <span class="menu-title">Pertanyaan</span>
                         <i class="mdi mdi-message menu-icon"></i>
                     </a>

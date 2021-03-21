@@ -19,8 +19,11 @@ Route::get('/tes', function() {
     return view('dashboard.tes');
 });
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/pertanyaan', 'AdministratorController@pertanyaan')->name('pertanyaan');
-Route::get('/pertanyaan/destroy/{id}', 'AdministratorController@destroy_pertanyaan')->name('pertanyaan.destroy');
+Route::name('pertanyaan.')->prefix('/pertanyaan')->group(function() {
+    Route::get('/', 'AdministratorController@pertanyaan')->name('list');
+    Route::post('/store', 'LandingPage@tanya')->name('store');
+    Route::get('/destroy/{id}', 'AdministratorController@destroy_pertanyaan')->name('destroy');
+});
 Route::name('pendaftaran.')->prefix('/pendaftaran')->group(function() {
     Route::get('/', 'AdministratorController@pendaftaran')->name('index');
     Route::get('/detail/{id}', 'AdministratorController@detail_pendaftaran')->name('detail');
@@ -63,4 +66,6 @@ Route::post('/daftar/simpan', 'LandingPage@simpandaftar');
 
 Route::post('/pendaftaran', 'AjaxController@pendaftaranpost')->name('pendaftaran');
 Route::get('/gettest', 'AjaxController@tes');
+
+Route::get('/nomors/{id}', 'AjaxController@nomors');
 

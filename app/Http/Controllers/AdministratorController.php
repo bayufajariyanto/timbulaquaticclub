@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Gaya;
 use App\Laporan;
+use App\Nomor;
 use App\Pertanyaan;
 use App\Student;
 use App\User;
@@ -95,13 +97,17 @@ class AdministratorController extends Controller
                     'l.tanggal', 
                     'u.name',
                     'l.keterangan', 
-                    'l.gaya', 
-                    'l.nomor', 
+                    'g.nama as gaya', 
+                    'n.nama as nomor', 
                     'l.waktu'
                 )
                 ->join('users as u', 'l.id_atlit', '=', 'u.id')
-                ->get();
-        return view('dashboard.laporan', ['atlit' => $atlit, 'data' => $data]);
+                ->join('gayas as g', 'l.id_gaya', '=', 'g.id')
+                ->join('nomors as n', 'l.id_nomor', '=', 'n.id')
+                ->get();        
+        $gaya = Gaya::all();
+        $nomor = Nomor::where('id_gaya', 1)->get();
+        return view('dashboard.laporan', ['atlit' => $atlit, 'data' => $data, 'gaya' => $gaya, 'nomor' => $nomor]);
     }
     
     public function rapor()
@@ -125,8 +131,8 @@ class AdministratorController extends Controller
         $laporan->id_atlit = $data['idmurid'];
         $laporan->tanggal = $data['tanggal'];
         $laporan->keterangan = $data['keterangan'];
-        $laporan->gaya = $data['gaya'];
-        $laporan->nomor = $data['nomor'];
+        $laporan->id_gaya = $data['gaya'];
+        $laporan->id_nomor = $data['nomor'];
         $laporan->waktu = $waktu;
         $laporan->save();
 
@@ -136,38 +142,40 @@ class AdministratorController extends Controller
     public function edit_laporan($id)
     {
         $atlit = DB::table('users as u')
-        ->select(
-            'u.id',                    
-            's.nama'                     
-            )
-            ->join('students as s', 'u.email', '=', 's.email')
-            ->get();
-            $data = Laporan::find($id);
-            return view('dashboard.laporan_edit', ['atlit' => $atlit, 'data' => $data]);
-        }
+            ->select(
+                'u.id',                    
+                's.nama'                     
+                )
+                ->join('students as s', 'u.email', '=', 's.email')
+                ->get();
+        $data = Laporan::find($id);
+        $gaya = Gaya::all();
+        $nomor = Nomor::where('id_gaya', $data->id_gaya)->get();        
+        return view('dashboard.laporan_edit', ['atlit' => $atlit, 'data' => $data, 'gaya' => $gaya, 'nomor' => $nomor]);
+    }
         
-        public function update_laporan(Request $request)
-        {
-            $data = $request->all();
-            $waktu = $data['jam']."'".$data['menit']."'".$data['detik']."'".$data['milidetik'];
-            
-            $laporan = Laporan::find($data['idlaporan']);
-            $laporan->id_atlit = $data['idmurid'];
-            $laporan->tanggal = $data['tanggal'];
-            $laporan->keterangan = $data['keterangan'];
-            $laporan->gaya = $data['gaya'];
-            $laporan->nomor = $data['nomor'];
-            $laporan->waktu = $waktu;
-            $laporan->save();
+    public function update_laporan(Request $request)
+    {
+        $data = $request->all();
+        $waktu = $data['jam']."'".$data['menit']."'".$data['detik']."'".$data['milidetik'];
+        
+        $laporan = Laporan::find($data['idlaporan']);
+        $laporan->id_atlit = $data['idmurid'];
+        $laporan->tanggal = $data['tanggal'];
+        $laporan->keterangan = $data['keterangan'];
+        $laporan->id_gaya = $data['gaya'];
+        $laporan->id_nomor = $data['nomor'];
+        $laporan->waktu = $waktu;
+        $laporan->save();
 
-            return redirect()->route('laporan.list')->with('message', 'Berhasil mengubah data nilai');
-        }
+        return redirect()->route('laporan.list')->with('message', 'Berhasil mengubah data nilai');
+    }
 
-        public function destroy_laporan($id)
-        {
-            $laporan = Laporan::find($id);
-            $laporan->delete();
-            
-            return redirect()->route('laporan.list')->with('message', 'Berhasil menghapus data nilai');        
-        }
+    public function destroy_laporan($id)
+    {
+        $laporan = Laporan::find($id);
+        $laporan->delete();
+        
+        return redirect()->route('laporan.list')->with('message', 'Berhasil menghapus data nilai');        
+    }
 }

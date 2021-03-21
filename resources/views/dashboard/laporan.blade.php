@@ -62,23 +62,17 @@
                                 <div class="form-group">
                                     <label for="gaya">Gaya</label>
                                     <select class="form-control" id="gaya" name="gaya" required>
-                                        <option value="Free Style (Bebas)">Free Style (Bebas)</option>
-                                        <option value="Breaststroke (Dada)">Breaststroke (Dada)</option>            
-                                        <option value="Backstroke (Punggung)">Backstroke (Punggung)</option>
-                                        <option value="Butterfly (Kupu-Kupu)">Butterfly (Kupu-Kupu)</option>
-                                        <option value="Gaya Ganti">Gaya Ganti</option>
-                                        <option value="Surface">Surface</option>
-                                        <option value="Biffins">Biffins</option>
+                                        @foreach ($gaya as $g)
+                                            <option value="{{$g->id}}">{{$g->nama}}</option>
+                                        @endforeach                                        
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="nomor">Nomor</label>
                                     <select class="form-control" id="nomor" name="nomor" required>
-                                        <option value="100 M">100 M</option>
-                                        <option value="200 M">200 M</option>            
-                                        <option value="400 M">400 M</option>
-                                        <option value="800 M">800 M</option>
-                                        <option value="1500 M">1500 M</option>
+                                        @foreach ($nomor as $n)                                            
+                                            <option value="{{$n->id}}">{{$n->nama}}</option>                                            
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-row">             
@@ -167,5 +161,22 @@
         if(parseInt(input.value,10)<10 && input.value.length === 1)input.value='0'+input.value;
         if(input.value == '')input.value='00';
     }    
+    $('select[name="gaya"]').on('change', function() {
+        var gayaId = $(this).val();
+        if(gayaId) {
+            $.ajax({
+                url: '/nomors/'+gayaId,
+                type: 'GET',
+                dataType: 'json',
+                success:function(data) {
+                    console.log(data)
+                    $('select[name="nomor"]').empty();
+                    $.each(data.nomors, function(key, value) {
+                        $('select[name="nomor"]').append('<option value="'+ value.id+'">'+ value.nama +'</option>');
+                    })
+                }
+            })
+        }
+    })
 </script>
 @endsection

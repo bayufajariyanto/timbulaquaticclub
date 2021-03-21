@@ -11,8 +11,8 @@ class Laporan extends Model
         'id_atlit',
         'tanggal',
         'keterangan',
-        'gaya',
-        'nomor',
+        'id_gaya',
+        'id_nomor',
         'waktu'
     ];
 }

@@ -255,30 +255,51 @@
             </div>
         </main>
     </section>
-    <section class="miri-ui-kit-section contact-section">
+    <section class="miri-ui-kit-section contact-section" id="success">
         <div class="container">
             <h2 class="text-center mb-4">Tanyakan pada kami</h2>
             <p class="text-center mb-4 pb-3">
                 Jika ada yang bisa kami bantu, beri tahu kami.<br>Kami akan dengan senang hati menawarkan bantuan kepada anda.
             </p>
+            @if (session('message'))                
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <form action="{{ url('/') }}" class="contact-form">
+                    <div class="alert bg-gradient-success alert-dismissible fade show" role="alert">
+                        <font size="2">
+                        {{ session('message') }}
+                        {{-- Berhasil mengirimkan pertanyaan --}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </font>
+                </div>
+                </div>
+            </div>
+            @endif
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form action="{{ route('pertanyaan.store') }}" class="contact-form" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control form-control-pill" placeholder="Nama Lengkap">
+                                <input type="text" class="form-control form-control-pill" name="nama" placeholder="Nama Lengkap" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control form-control-pill"
-                                    placeholder="Email@example.com">
+                                <input type="text" class="form-control form-control-pill" name="email"
+                                    placeholder="Email@example.com" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control form-control-pill" placeholder="Nomor HP (WA)">
+                                <input type="text" class="form-control form-control-pill" name="telp" placeholder="Nomor HP (WA)" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="submit" value="Send Message" class="btn btn-block btn-pill btn-primary">
+                                <input type="text" class="form-control form-control-pill" name="pertanyaan" placeholder="Pertanyaan" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <input type="submit" value="Send Message" class="btn btn-block btn-pill btn-primary">                                
                             </div>
                         </div>
                     </form>
