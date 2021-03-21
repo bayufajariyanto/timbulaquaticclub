@@ -112,7 +112,22 @@ class AdministratorController extends Controller
     
     public function rapor()
     {
-        return view('dashboard.rapor');
+        // select u.id, u.name, s.foto, s.jenis_kelamin from laporans l join users u on l.id_atlit=u.id 
+        // join students s on u.email = s.email group by l.id_atlit;
+        $data = DB::table('laporans as l')
+            ->select(
+                'u.id as id_atlit',
+                'u.name',
+                's.foto',
+                's.jenis_kelamin',
+                's.program'
+            )
+            ->join('users as u', 'l.id_atlit', '=', 'u.id')
+            ->join('students as s', 'u.email', '=', 's.email')
+            ->distinct('l.id_atlit')
+            ->get();
+        // dd($data);
+        return view('dashboard.rapor', ['data' => $data]);
     }
 
     public function detail_rapor($id)

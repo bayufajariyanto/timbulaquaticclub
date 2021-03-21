@@ -26,61 +26,34 @@
     <div class="card">
     <div class="card-body">        
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="datatables">
                 <thead>
                 <tr>
-                    <th> Assignee </th>
-                    <th> Subject </th>
-                    <th> Status </th>
-                    <th> Last Update </th>
+                    <th> ID </th>
+                    <th> Nama </th>
+                    <th> Jenis Kelamin </th>
+                    <th> Program </th>
                     <th> Aksi </th>
                 </tr>
                 </thead>
                 <tbody>
+                @forelse ($data as $atlit)                    
                 <tr>
+                    <td>{{$atlit->id_atlit}}</td>
                     <td>
-                    <img src="{{asset('assets/images/faces/face1.jpg')}}" class="mr-2" alt="image"> David Grey
+                        <img src="{{asset('storage/upload/img/atlit/'.$atlit->foto)}}" alt="image"> &nbsp; {{$atlit->name}}
                     </td>
-                    <td> Fund is not recieved </td>
+                    <td> {{$atlit->jenis_kelamin}} </td>
                     <td>
-                    <label class="badge badge-gradient-success">DONE</label>
-                    </td>
-                    <td> Dec 5, 2017 </td>
-                    <td> <a class="btn btn-sm btn-primary" href="{{route('rapor.detail', ['id' => 1])}}">Detail</a> </td>
+                    <label class="badge badge-gradient-info">{{$atlit->program}}</label>
+                    </td>                    
+                    <td> <a class="btn btn-sm btn-primary" href="{{route('rapor.detail', ['id' => $atlit->id_atlit])}}">Detail</a> </td>
                 </tr>
-                <tr>
-                    <td>
-                    <img src="{{asset('assets/images/faces/face2.jpg')}}" class="mr-2" alt="image"> Stella Johnson
-                    </td>
-                    <td> High loading time </td>
-                    <td>
-                    <label class="badge badge-gradient-warning">PROGRESS</label>
-                    </td>
-                    <td> Dec 12, 2017 </td>
-                    <td> <a class="btn btn-sm btn-primary" href="{{route('rapor.detail', ['id' => 1])}}">Detail</a> </td>
-                </tr>
-                <tr>
-                    <td>
-                    <img src="{{asset('assets/images/faces/face3.jpg')}}" class="mr-2" alt="image"> Marina Michel
-                    </td>
-                    <td> Website down for one week </td>
-                    <td>
-                    <label class="badge badge-gradient-info">ON HOLD</label>
-                    </td>
-                    <td> Dec 16, 2017 </td>
-                    <td> <a class="btn btn-sm btn-primary" href="{{route('rapor.detail', ['id' => 1])}}">Detail</a> </td>
-                </tr>
-                <tr>
-                    <td>
-                    <img src="{{asset('assets/images/faces/face4.jpg')}}" class="mr-2" alt="image"> John Doe
-                    </td>
-                    <td> Loosing control on server </td>
-                    <td>
-                    <label class="badge badge-gradient-danger">REJECTED</label>
-                    </td>
-                    <td> Dec 3, 2017 </td>
-                    <td> <a class="btn btn-sm btn-primary" href="{{route('rapor.detail', ['id' => 1])}}">Detail</a> </td>
-                </tr>
+                @empty
+                    <tr>
+                        <td>Data tidak ditemukan</td>
+                    </tr>
+                @endforelse                
                 </tbody>
             </table>
         </div>
