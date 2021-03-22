@@ -44,7 +44,7 @@ Route::name('rapor.')->prefix('/rapor')->group(function() {
 });
 Route::name('murid.')->prefix('/atlit')->group(function() {
     Route::get('/list', 'MuridController@list')->name('list');
-    Route::get('/tambah', 'MuridController@add')->name('tambah');
+    Route::get('/detail/{id}', 'MuridController@detail')->name('detail');
     Route::get('/nilai', 'NilaiController@nilai')->name('nilai');
 });
 Route::name('akun.')->prefix('/akun')->group(function() {
@@ -57,7 +57,7 @@ Route::name('akun.')->prefix('/akun')->group(function() {
     Route::post('/update', 'AkunController@update')->name('update');
     Route::get('/list/hapus/{id}', 'AkunController@destroy')->name('hapus');
 });
-// Route::get('/nilai', 'MuridController@nilaibyid')->name('murid.nilaibyid');
+Route::get('/biodata', 'NilaiController@biodata')->name('biodata');
 Route::get('/daftar', 'LandingPage@daftar')->name('daftar');
 Route::get('/pelatih', 'LandingPage@pelatih');
 Route::get('/tentang', 'LandingPage@tentang');

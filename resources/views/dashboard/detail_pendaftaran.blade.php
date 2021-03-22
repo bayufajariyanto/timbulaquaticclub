@@ -4,12 +4,16 @@
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-clipboard-account"></i>
-        @if (!$data->isapproved)            
-            </span> <a href="{{ route('pendaftaran.index') }}">Pendaftaran</a>
+        @if (Route::is('biodata'))
+            </span> Biodata
         @else
-            </span> <a href="{{ route('murid.list') }}">List Atlit</a>
-        @endif
-         / Detail
+            @if (!$data->isapproved)            
+                </span> <a href="{{ route('pendaftaran.index') }}">Pendaftaran</a>        
+            @else
+                </span> <a href="{{ route('murid.list') }}">List Atlit</a>        
+            @endif
+            / Detail
+         @endif
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">

@@ -144,6 +144,12 @@
                 </li>
                 @endcan           
                 @can('display-nilai')                        
+                <li class="nav-item {{ Route::is('biodata') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('biodata') }}">
+                        <span class="menu-title">Biodata</span>
+                        <i class="mdi mdi-clipboard-account menu-icon"></i>
+                    </a>                    
+                </li>
                 <li class="nav-item {{ Route::is('murid.nilai') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('murid.nilai') }}">
                         <span class="menu-title">Rapor</span>

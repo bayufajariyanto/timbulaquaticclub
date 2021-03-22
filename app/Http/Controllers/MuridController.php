@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,23 +42,8 @@ class MuridController extends Controller
         return view('murid.list', ['data' => $data]);
     }    
 
-    public function add(){
-        return view('murid.tambah');
-    }
-
-    public function store(){
-
-    }
-
-    public function edit(){
-
-    }
-
-    public function update(){
-
-    }
-
-    public function destroy(){
-
+    public function detail($id){
+        $data = Student::find($id);
+        return view('dashboard.detail_pendaftaran', ['data' => $data]);
     }
 }

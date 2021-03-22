@@ -44,7 +44,7 @@
                         <td> {{$atlit->nama}} </td>
                         <td> {{$atlit->telp}} </td>
                         <td> <img src="{{asset('storage/upload/img/atlit/'.$atlit->foto)}}" class="mr-2" alt="image"> </td>
-                        <td> <a class="btn btn-info btn-sm" href="{{route('pendaftaran.detail', ['id' => $atlit->id])}}">Detail</a> </td>
+                        <td> <a class="btn btn-info btn-sm" href="{{route('murid.detail', ['id' => $atlit->id])}}">Detail</a> </td>
                     </tr>
                 @empty
                     <tr>

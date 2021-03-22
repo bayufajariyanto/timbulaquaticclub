@@ -20,430 +20,113 @@
     <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Rapor</h4>
-            <p>DIMAS ADJI FITRIAN WIBAWA</p>
-            <p>18022310</p>
-            <p>21/10/2007</p>
-            <p>2007</p>
-            <p>Laki-laki</p>
-            <p>Bayu Fajariyanto <span class="badge badge-gradient-primary">Coach</span></p>
-            <div class="table-responsive">
+            <h4 class="card-title">Rapor</h4>            
+            <div class="row">
+                <div class="col-md-9">
+                    <table class="table">
+                        <tr>
+                            <td>Nama</td>
+                            <td>{{ucfirst($atlit[0]->nama)}}</td>
+                        </tr>                        
+                        <tr>
+                            <td>Nomor Induk</td>
+                            <td>{{$atlit[0]->id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal Lahir</td>
+                            <td>{{$atlit[0]->tanggal_lahir}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tahun Masuk</td>
+                            <td>{{$atlit[0]->tahun_masuk}}</td>
+                        </tr>
+                        <tr>
+                            <td>Jenis Kelamin</td>
+                            <td>{{$atlit[0]->jenis_kelamin}}</td>
+                        </tr>
+                        <tr>
+                            <td>Pelatih</td>
+                            <td>{{ucfirst($pelatih->name)}} <span class="badge badge-gradient-primary">{{($pelatih->roles == 'Admin') ? 'Coach' : 'Super Admin'}}</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-3 align-self-end">
+                    <img src="{{asset('storage/upload/img/atlit/'.$atlit[0]->foto)}}" class="img-thumbnail mr-2" alt="image">
+                </div>
+            </div>
+            <div class="table-responsive mt-5">
                 <table class="table table-bordered text-center">
                     <thead>
                     <tr>
-                        <th rowspan="4" class="align-middle"> GAYA </th>
-                        <th rowspan="4" class="align-middle"> NOMOR </th>
-                        <th colspan="15"> 2019 </th>
+                        <th rowspan="5" class="align-middle"> GAYA </th>
+                        <th rowspan="5" class="align-middle"> NOMOR </th>                        
+                    </tr>             
+                    <tr>
+                        @foreach ($tahun as $data)
+                            <th colspan="{{$data->jumlah}}">{{$data->tahun}}</th>
+                        @endforeach
+                    </tr>       
+                    <tr>
+                        @foreach ($bulan as $data)
+                            <th colspan="{{$data->jumlah}}">{{$data->bulan}}</th>
+                        @endforeach
+                    </tr>       
+                    <tr>
+                        @foreach ($laporan as $item)
+                        <th>{{$item->tanggal}}</th>
+                        @endforeach
                     </tr>
                     <tr>
-                        <th>Juni</th>
-                        <th colspan="2">July</th>
-                        <th colspan="2">September</th>
-                        <th>October</th>
+                        @foreach ($laporan as $item)
+                        <th class="text-wrap">{{$item->keterangan}}</th>
+                        @endforeach
                     </tr>
-                    <tr>
-                        <th>24/6/2019</th>
-                        <th>09/7/2019</th>
-                        <th>20-21/7/2019</th>
-                        <th>21-31/8/2019</th>
-                        <th>7-8/9/2019</th>                        
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th>TEST PSK</th>
-                        <th>TEST SAIGON</th>
-                        <th>HASIL ABD<br> saleh CUP I</th>
-                        <th>TEST PSK</th>
-                        <th>HASIL TYRKEDIRI</th>
-                        <th></th>
-                    </tr>                
                     </thead>
                     <tbody>
-                        <tr>
-                            <td rowspan="6">FREE STYLE <br>(BEBAS)</td>
-                            <td>50 M</td>
-                            <td>00'32'73</td>
-                            <td></td>
-                            <td>00.32.33</td>
-                            <td></td>
-                            <td>00.32.33</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>100 M</td>
-                            <td>01'13'91</td>
-                            <td></td>
-                            <td>01.10.30</td>
-                            <td>01.12.58</td>
-                            <td>01.10.30</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>200 M</td>
-                            <td>02'38'98</td>
-                            <td></td>
-                            <td>02.37.45</td>
-                            <td>02.39.77</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>400 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>05.41.34</td>
-                            <td>05.44.58</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>800 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>1500 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="6">BREASTSTROKE <br>(DADA)</td>
-                            <td>50 M</td>
-                            <td>00'44'41</td>
-                            <td></td>
-                            <td>00.40.62</td>
-                            <td></td>
-                            <td>00.40.62</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>100 M</td>
-                            <td>01'39'89</td>
-                            <td></td>
-                            <td>01.29.05</td>
-                            <td></td>
-                            <td>01.29.05</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>200 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>400 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>       
-                        <tr>
-                            <td>800 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>1500 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="6">BACKSTROKE <br>(PUNGGUNG)</td>
-                            <td>50 M</td>
-                            <td>00'42'23</td>
-                            <td></td>
-                            <td>00.38.78</td>
-                            <td></td>
-                            <td>00.38.78</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>100 M</td>
-                            <td></td>
-                            <td>01'29'61</td>
-                            <td>01.27.40</td>
-                            <td>01.12.29</td>
-                            <td>01.27.40</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>200 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>400 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>800 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>1500 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>                
-                        <tr>
-                            <td rowspan="6">BUTTERFLY <br>(KUPU-KUPU)</td>
-                            <td>50 M</td>
-                            <td>00'35'36</td>
-                            <td></td>
-                            <td>00.33.73</td>
-                            <td></td>
-                            <td>00.33.42</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>100 M</td>
-                            <td>01'20'95</td>
-                            <td>01'44'03</td>
-                            <td>01.19.42</td>
-                            <td>01.18.21</td>
-                            <td>01,16.54</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>200 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>400 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>800 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>1500 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>                
-                        <tr>
-                            <td rowspan="6">GAYA GANTI</td>                    
-                            <td>50 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>02.39.77</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>100 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>02.39.77</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>200 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>400 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>800 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>1500 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="6">SURFACE</td>
-                            <td>50 M</td>
-                            <td>00.32.33</td>
-                            <td>00.32.33</td>
-                            <td>00.32.33</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>100 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>200 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>400 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>800 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>1500 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="6">BIFFINS</td>
-                            <td>50 M</td>
-                            <td>00.32.33</td>
-                            <td>00.32.33</td>
-                            <td>00.32.33</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>100 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>200 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>400 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>800 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>1500 M</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        @php
+                            $count = 0;
+                            $currentidgayas = 0;                            
+                            $is_show = false; // true e mek pas ndek nomor 100 m tok
+                            for ($i=0; $i < count($nomors); $i++) { 
+                                if ($i == 0) {
+                                    $currentidgayas = $nomors[$i]->id_gayas;
+                                    $is_show = true;                                    
+                                    $currentindex = $i;
+                                    while ($currentindex < count($nomors)) {                                        
+                                        if ($currentidgayas == $nomors[$currentindex]->id_gayas) {
+                                            $count++;                                            
+                                        }
+                                        $currentindex++;
+                                    }                                    
+                                } else {
+                                    if ($currentidgayas != $nomors[$i]->id_gayas) {
+                                        $currentidgayas = $nomors[$i]->id_gayas;
+                                        $is_show = true;   
+                                        $count=0;                                 
+                                        $currentindex = $i;
+                                        while ($currentindex < count($nomors)) {                                        
+                                            if ($currentidgayas == $nomors[$currentindex]->id_gayas) {
+                                                $count++;                                                
+                                            }
+                                            $currentindex++;
+                                        }
+                                    } else {
+                                        $is_show = false;
+                                    }
+                                }                                
+                        @endphp
+                                <tr>
+                                    @if ($is_show)
+                                        <td rowspan="{{$count}}" class="text-wrap">{{$nomors[$i]->nama_gayas}}</td>
+                                    @endif
+                                    <td>{{$nomors[$i]->nama_nomors}}</td>
+                                    @foreach ($laporan as $item)
+                                        <td>{{(($item->id_nomor == $nomors[$i]->id_nomors) ? $item->waktu : '')}}</td>
+                                    @endforeach
+                                </tr>
+                        @php
+                            }                            
+                        @endphp                                      
                     </tbody>
                 </table>
             </div>

@@ -66,7 +66,8 @@ class GayaNomorSeeder extends Seeder
             $nomor = new Nomor();
             $nomor->nama = "800 M";
             $nomor->id_gaya = $i;
-            $nomor->save();        
+            $nomor->save();      
+            $nomor = new Nomor();            
             $nomor->nama = "1500 M";
             $nomor->id_gaya = $i;
             $nomor->save();        
