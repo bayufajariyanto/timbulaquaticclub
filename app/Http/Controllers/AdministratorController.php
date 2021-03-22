@@ -132,7 +132,7 @@ class AdministratorController extends Controller
 
     public function detail_rapor($id)
     {
-        $laporan = Laporan::where('id_atlit', $id)->get();
+        $laporan = Laporan::where('id_atlit', $id)->orderBy('tanggal')->get();
         $id_pelatih = $laporan[$laporan->count()-1]->id_pelatih;
         
         $tahun = DB::table('laporans')

@@ -31,7 +31,7 @@
     <div class="card-body">        
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ url()->previous() }}" class="btn btn-gradient-info btn-sm">
+                <a href="{{ url()->previous() }}" class="btn btn-gradient-info btn-sm {{(Route::is('biodata') ? 'd-none' : '')}}">
                     <span class="mdi mdi-keyboard-backspace"> Kembali</span>
                 </a>
             </div>

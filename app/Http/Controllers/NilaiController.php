@@ -18,7 +18,7 @@ class NilaiController extends Controller
 
     public function nilai(){
         $id = Auth::id();
-        $laporan = Laporan::where('id_atlit', $id)->get();
+        $laporan = Laporan::where('id_atlit', $id)->orderBy('tanggal')->get();
         $id_pelatih = $laporan[$laporan->count()-1]->id_pelatih;
         $pelatih = User::find($id_pelatih);
         $tahun = DB::table('laporans')
