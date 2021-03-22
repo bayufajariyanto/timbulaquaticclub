@@ -29,6 +29,7 @@ class CreateStudentsTable extends Migration
             $table->string('riwayat')->nullable();
             $table->string('alasan')->nullable();
             $table->boolean('isapproved')->default(0);
+            $table->bigInteger('approvedby_id_user')->nullable();
             $table->timestamps();
         });
     }

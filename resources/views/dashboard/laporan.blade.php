@@ -115,7 +115,7 @@
     <div class="card-body">
         {{-- <h4 class="card-title">Recent Tickets</h4> --}}
         <div class="table-responsive">
-        <table class="table">
+        <table class="table" id="datatables">
             <thead>
             <tr>
                 <th> Tanggal </th>

@@ -46,7 +46,7 @@
                         </tr>
                         <tr>
                             <td>Pelatih</td>
-                            <td>{{ucfirst($pelatih->name)}} <span class="badge badge-gradient-primary">{{($pelatih->roles == 'Admin') ? 'Coach' : 'Super Admin'}}</span></td>
+                            <td>{{ucfirst($pelatih->name)}} <span class="badge badge-gradient-primary">{{($pelatih->roles == 'Admin') ? 'Coach' : 'Administrator'}}</span></td>
                         </tr>
                     </table>
                 </div>
@@ -73,7 +73,7 @@
                     </tr>       
                     <tr>
                         @foreach ($laporan as $item)
-                        <th>{{$item->tanggal}}</th>
+                        <th>{{date("d", strtotime($item->tanggal))}}</th>
                         @endforeach
                     </tr>
                     <tr>

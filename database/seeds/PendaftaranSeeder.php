@@ -27,6 +27,7 @@ class PendaftaranSeeder extends Seeder
         $daftar->riwayat = "Paru";
         $daftar->alasan = "suka suka";
         $daftar->save();
+        $daftar = new Student();
         $daftar->email = "asd@gmail.com";
         $daftar->nama = "asd";
         $daftar->telp = "098765";

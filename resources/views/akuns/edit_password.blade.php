@@ -15,8 +15,8 @@
 <div class="page-header">
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
-            <i class="mdi mdi-file-document"></i>
-        </span> <a href="{{ route('akun.list') }}">List Akun</a> / Edit
+            <i class="mdi mdi-textbox-password"></i>
+        </span> Ubah Password
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">

@@ -50,6 +50,7 @@ class AdministratorController extends Controller
         $user->save();
 
         $data->isapproved = 1;
+        $data->approvedby_id_user = Auth::id();
         $data->save();
 
         return redirect()->route('pendaftaran.index')->with('message', 'Berhasil menerima pendaftaran');
@@ -143,16 +144,17 @@ class AdministratorController extends Controller
             ->where('id_atlit', $id)
             ->groupBy(DB::raw('year(tanggal)'))            
             ->get();
-
+        
         $bulan = DB::table('laporans')
             ->select(
                 DB::raw('monthname(tanggal) as bulan'),
                 DB::raw('count(id) jumlah')
             )
             ->where('id_atlit', $id)
-            ->groupBy(DB::raw('monthname(tanggal)'))            
+            ->groupBy(DB::raw('year(tanggal)'))
+            ->groupBy(DB::raw('monthname(tanggal)'))
             ->get();        
-
+        
         $pelatih = User::find($id_pelatih);                
         $atlit = DB::table('users as u')
             ->select(

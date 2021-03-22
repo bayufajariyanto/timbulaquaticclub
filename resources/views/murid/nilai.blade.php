@@ -23,7 +23,9 @@
                 <h4 class="card-title">Rapor</h4>            
                 <p>{{ucfirst($atlit[0]->nama)}}</p>
                 <p>{{$atlit[0]->tahun_masuk}}</p>
-                <p>{{ucfirst($pelatih->name)}} <span class="badge badge-gradient-primary">{{($pelatih->roles == 'Admin') ? 'Coach' : 'Super Admin'}}</span></p>            
+                @if (count($laporan) > 0)                    
+                <p>{{ucfirst($pelatih->name)}} <span class="badge badge-gradient-primary">{{($pelatih->roles == 'Admin') ? 'Coach' : 'Administrator'}}</span></p>            
+                @endif
             <div class="table-responsive mt-5">
                 <table class="table table-bordered text-center">
                     <thead>
@@ -43,7 +45,7 @@
                     </tr>       
                     <tr>
                         @foreach ($laporan as $item)
-                        <th>{{$item->tanggal}}</th>
+                        <th>{{date("d", strtotime($item->tanggal))}}</th>
                         @endforeach
                     </tr>
                     <tr>
