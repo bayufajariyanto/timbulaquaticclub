@@ -30,6 +30,7 @@
                 <th> Nama </th>
                 <th> Nomor HP (WA) </th>
                 <th> Foto </th>
+                <th> Pengkonfirmasi </th>
                 <th> Aksi </th>
             </tr>
             </thead>
@@ -41,9 +42,10 @@
                     <tr>
                         <td> {{$id++}}</td>
                         <td> {{$atlit->email}} </td>
-                        <td> {{$atlit->nama}} </td>
+                        <td> {{ucfirst($atlit->nama)}} </td>
                         <td> {{$atlit->telp}} </td>
                         <td> <img src="{{asset('storage/upload/img/atlit/'.$atlit->foto)}}" class="mr-2" alt="image"> </td>
+                        <td> {{ucfirst($atlit->approver)}} </td>
                         <td> <a class="btn btn-info btn-sm" href="{{route('murid.detail', ['id' => $atlit->id])}}">Detail</a> </td>
                     </tr>
                 @empty

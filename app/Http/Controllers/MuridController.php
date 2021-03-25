@@ -20,7 +20,7 @@ class MuridController extends Controller
     }
 
     public function list(){        
-        $data = DB::table('users as u')
+        $data = DB::table('students as s')
                 ->select(
                     's.id',
                     's.email',
@@ -32,13 +32,15 @@ class MuridController extends Controller
                     's.pelatih', 
                     's.foto', 
                     's.bukti',
+                    'u.name as approver',
                     's.program',
                     's.jumlah',
                     's.riwayat',
                     's.alasan'
                 )
-                ->join('students as s', 'u.email', '=', 's.email')
-                ->get();                
+                ->join('users as u', 's.approvedby_id_user', '=', 'u.id')                
+                ->where('s.isapproved', 1)
+                ->get();                        
         return view('murid.list', ['data' => $data]);
     }    
 

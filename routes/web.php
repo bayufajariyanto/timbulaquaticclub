@@ -62,6 +62,7 @@ Route::get('/daftar', 'LandingPage@daftar')->name('daftar');
 Route::get('/pelatih', 'LandingPage@pelatih');
 Route::get('/tentang', 'LandingPage@tentang');
 Route::get('/lokasi', 'LandingPage@lokasi');
+Route::get('/harga/detail/{id}', 'LandingPage@detail_price')->name('detailprice');
 Route::post('/daftar/simpan', 'LandingPage@simpandaftar');
 
 Route::post('/pendaftaran', 'AjaxController@pendaftaranpost')->name('pendaftaran');

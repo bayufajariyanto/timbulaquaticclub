@@ -187,7 +187,7 @@
                             <li>10 participants max</li>
                         </ul>
                         <p><small class="text-danger">*Tidak termasuk tiket kolam</small></p>
-                        <a href="#!" class="btn pricing-plan-purchase-btn">Detail</a>
+                        <a href="{{route('detailprice', ['id' => 0])}}" class="btn pricing-plan-purchase-btn">Detail</a>
                     </div>
                     </div>
                 </div>
@@ -205,7 +205,7 @@
                             <li>10 participants max</li>
                         </ul>
                         <p><small class="text-danger">*Tidak termasuk tiket kolam</small></p>
-                        <a href="#!" class="btn pricing-plan-purchase-btn">Detail</a>
+                        <a href="{{route('detailprice', ['id' => 3])}}" class="btn pricing-plan-purchase-btn">Detail</a>
                         {{-- <a href="#!" class="btn btn-outline-primary">Detail</a> --}}
                     </div>
                     </div>
@@ -227,7 +227,7 @@
                             <li>10 participants max</li>
                         </ul>
                         <p><small class="text-muted">*Sudah termasuk tiket kolam</small></p>
-                        <a href="#!" class="btn pricing-plan-purchase-btn">Detail</a>
+                        <a href="{{route('detailprice', ['id' => 2])}}" class="btn pricing-plan-purchase-btn">Detail</a>
                         </div>
                     </div>
                   </div>
@@ -246,7 +246,7 @@
                                 <li>10 participants max</li>
                             </ul>
                             <p><small class="text-danger">*Tidak termasuk tiket kolam</small></p>
-                            <a href="#!" class="btn pricing-plan-purchase-btn">Detail</a>
+                            <a href="{{route('detailprice', ['id' => 1])}}" class="btn pricing-plan-purchase-btn">Detail</a>
                         </div>
                         </div>
                   </div>

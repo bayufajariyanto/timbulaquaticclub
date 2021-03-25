@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="./assets/images/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('assets/images/icon.ico')}}" type="image/x-icon">
     {{-- SEO --}}
     <meta property="og:title" content="Kursus renang professional. Berkembang bersama kami | Timbul Aquatic Club">
     <meta property="og:site_name" content="Timbul Aquatic Club">
@@ -13,18 +13,18 @@
     <!-- Template by bootstrapdash.com -->
     <title>Timbul Aquatic Club</title>
     <!-- Vendor css -->
-    <link rel="stylesheet" href="../src/vendors/@mdi/font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{{asset('src/vendors/@mdi/font/css/materialdesignicons.min.css')}}">
 
     <!-- Base css with customised bootstrap included -->
-    <link rel="stylesheet" href="../src/css/miri-ui-kit-free.css">
+    <link rel="stylesheet" href="{{asset('src/css/miri-ui-kit-free.css')}}">
 
     <!-- Stylesheet for demo page specific css -->
-    <link rel="stylesheet" href="./assets/css/demo.css">
+    <link rel="stylesheet" href="{{asset('assets/css/demo.css')}}">
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/pricing-plan.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{asset('assets/css/pricing-plan.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <style>
         a .nav-icon .icon-youtube {
             color: #FF0000;
@@ -42,10 +42,10 @@
 </head>
 <body ng-app="app" ng-controller="controller">
     <header class="miri-ui-kit-header landing-header header-bg-2">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-on-scroll">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-on-scroll">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="./assets/images/logo.png" alt="logo">
+                    <img src="{{asset('assets/images/logo.png')}}" alt="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#miriUiKitNavbar"
                     aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,11 +132,11 @@
             </div>
         </div>
     </div>
-    <script src="../src/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../src/vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../src/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../src/js/miri-ui-kit.js"></script>    
+    <script src="{{asset('src/vendors/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('src/vendors/popper.js/dist/umd/popper.min.js')}}"></script>
+    <script src="{{asset('src/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('src/js/miri-ui-kit.js')}}"></script>    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="../js/angular.js"></script>
+    <script src="{{asset('js/angular.js')}}"></script>
 </body>
 </html>
