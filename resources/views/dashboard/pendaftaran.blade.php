@@ -63,18 +63,6 @@
                     <td>Data tidak ditemukan</td>
                 </tr>
             @endforelse
-            {{-- <tr>
-                <td> David Grey </td>
-                <td> david@gmail.com </td>
-                <td> 08277366 </td>
-                <td> <img src="{{asset('assets/images/faces/face1.jpg')}}" alt="image"> </td>
-                <td> 
-                    <a class="btn btn-info btn-sm" href="#">Lihat Bukti Transfer</a>     
-                </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="{{route('pendaftaran.detail', ['id' => 1])}}">Detail</a>
-                </td>
-            </tr>                        --}}
             </tbody>
         </table>
         </div>

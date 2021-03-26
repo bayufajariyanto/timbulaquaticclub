@@ -4,7 +4,7 @@
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-account-multiple"></i>
-        </span> List Murid
+        </span> List Atlit
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
@@ -30,7 +30,7 @@
                 <th> Nama </th>
                 <th> Nomor HP (WA) </th>
                 <th> Foto </th>
-                <th> Pengkonfirmasi </th>
+                <th> Dibuat Oleh </th>
                 <th> Aksi </th>
             </tr>
             </thead>

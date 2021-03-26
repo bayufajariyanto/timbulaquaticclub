@@ -44,10 +44,10 @@
                             <div class="modal-body bg-white">
                                 <div class="form-group">
                                     <label for="tanggal">Tanggal</label>
-                                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="DD-MM-YYYY" required>
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="DD-MM-YYYY" max="{{date('Y-m-d')}}" value="{{date('Y-m-d')}}" required>
                                 </div>                                       
                                 <div class="form-group">
-                                    <label for="murid">Nama Murid</label>
+                                    <label for="murid">Nama Atlit</label>
                                     <select class="form-control" id="murid" name="idmurid" required>
                                         @foreach ($atlit as $a)                                            
                                             <option value="{{$a->id}}">{{$a->nama}}</option>
@@ -130,7 +130,7 @@
             <tbody>
             @forelse ($data as $laporan)                
                 <tr>
-                    <td>{{$laporan->tanggal}}</td>
+                    <td>{{date('d F Y', strtotime($laporan->tanggal))}}</td>
                     <td>{{$laporan->name}}</td>
                     <td>{{$laporan->keterangan}}</td>
                     <td>{{$laporan->gaya}}</td>

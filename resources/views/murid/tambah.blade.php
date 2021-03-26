@@ -4,7 +4,7 @@
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-account-multiple-plus"></i>
-        </span> Tambah Murid
+        </span> Tambah Atlit
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">

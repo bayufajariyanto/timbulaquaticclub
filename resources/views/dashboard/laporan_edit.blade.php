@@ -50,7 +50,7 @@
                             <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{$data['tanggal']}}" placeholder="DD-MM-YYYY" required>
                         </div>                                       
                         <div class="form-group">
-                            <label for="murid">Nama Murid</label>
+                            <label for="murid">Nama Atlit</label>
                             <select class="form-control" id="murid" name="idmurid" required>
                                 @foreach ($atlit as $a)                                            
                                     <option value="{{$a->id}}" {{($data['id_atlit'] == $a->id) ? 'selected' : ''}}>{{$a->nama}}</option>

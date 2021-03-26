@@ -45,7 +45,7 @@
             <div class="card shadow-sm mb-4" ng-show="isForm">
                 @csrf
                 <div class="card-header">
-                    <h4>Formulir Data Murid @{{ row+1 }}</h4>
+                    <h4>Formulir Data Atlit @{{ row+1 }}</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -73,7 +73,7 @@
                             <div class="mb-5">
                                 <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label><br>
                                 <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" ng-model="input[row].jenis_kelamin" id="laki@{{row}}" value="laki" required>
+                                    <input type="radio" class="form-check-input" ng-model="input[row].jenis_kelamin" id="laki@{{row}}" value="laki">
                                     <label class="form-check-label" for="laki@{{row}}">Laki-laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -87,7 +87,7 @@
                             <div class="mb-5">
                                 <label for="pelatih" class="form-label">Pelatih</label><br>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" ng-model="input[row].pelatih" id="pelatihlaki@{{row}}" value="laki" required>
+                                    <input class="form-check-input" type="radio" ng-model="input[row].pelatih" id="pelatihlaki@{{row}}" value="laki">
                                     <label class="form-check-label" for="pelatihlaki@{{row}}">Laki-laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">

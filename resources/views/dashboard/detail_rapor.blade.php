@@ -34,7 +34,7 @@
                         </tr>
                         <tr>
                             <td>Tanggal Lahir</td>
-                            <td>{{$atlit[0]->tanggal_lahir}}</td>
+                            <td>{{date('d F Y', strtotime($atlit[0]->tanggal_lahir))}}</td>
                         </tr>
                         <tr>
                             <td>Tahun Masuk</td>

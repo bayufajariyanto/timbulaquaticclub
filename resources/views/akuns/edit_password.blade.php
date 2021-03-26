@@ -36,7 +36,7 @@
             @csrf                        
             <div class="form-group">
                 <label for="nama">Password Lama</label>
-                <input type="password" class="form-control" id="nama" name="passwordlama" placeholder="Nama">
+                <input type="password" class="form-control" id="nama" name="passwordlama" placeholder="Password lama anda">
             </div>                                       
             <div class="form-row">             
                 <div class="form-group col-md-6">

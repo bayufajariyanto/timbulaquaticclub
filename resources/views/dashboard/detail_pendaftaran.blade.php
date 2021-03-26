@@ -54,7 +54,7 @@
                     </tr>
                     <tr>
                       <th>Tanggal lahir</th>
-                        <td>{{$data->tanggal_lahir}}</td>
+                        <td>{{date('d F Y', strtotime($data->tanggal_lahir))}}</td>
                     </tr>
                     <tr>
                         <th>Jenis Kelamin</th>

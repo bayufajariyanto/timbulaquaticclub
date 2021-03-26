@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{asset('assets/images/icon.ico')}}" type="image/x-icon">
     {{-- SEO --}}
-    <meta property="og:title" content="Kursus renang professional. Berkembang bersama kami | Timbul Aquatic Club">
+    <meta property="og:title" content="Kursus renang terasa lebih mudah dan menyenangkan bersama Timbul Aquatic Club">
     <meta property="og:site_name" content="Timbul Aquatic Club">
     <meta property="og:description" content="Berenang terasa mudah dan menyenangkan bersama kami. Kursus paling terpercaya di Jawa Timur.">
     {{-- <meta property="og:url" content="https://www.tokopedia.com" data-rh="true"> Menyusul --}}
     <!-- Template by bootstrapdash.com -->
-    <title>Timbul Aquatic Club</title>
+    <title>Kursus renang terasa lebih mudah dan menyenangkan bersama Timbul Aquatic Club</title>
     <!-- Vendor css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('src/vendors/@mdi/font/css/materialdesignicons.min.css')}}">
@@ -26,6 +26,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/css/pricing-plan.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
     <style>
         a .nav-icon .icon-youtube {
             color: #FF0000;
@@ -61,7 +62,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                             Program
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right mt-n1">
                             <a href="#" class="dropdown-item text-break" style="margin-top: -8px" ng-repeat="value in programs"><i class="dropdown-item-icon"></i>@{{ value.nama }}</a>
                             {{-- <a href="#" class="dropdown-item" style="margin-top: -8px"><i class="dropdown-item-icon mdi mdi-shape-outline"></i>Paket 1</a>
                             <a href="#" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-lock-outline"></i>2. Kelas Privat</a>
@@ -74,7 +75,7 @@
                         <a href="#" class="nav-link dropdown-toggle {{ $url == 'pelatih' || $url == 'tentang' || $url == 'lokasi' ? 'active' : '' }}" data-toggle="dropdown">
                             Kami
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right mt-n1">
                             <a href="{{ url('/pelatih') }}" class="dropdown-item {{ $url == 'pelatih' ? 'active' : '' }}" style="margin-top: -8px"><i class="dropdown-item-icon mdi mdi-shield-account-outline"></i>Pelatih</a>
                             <a href="{{ url('/tentang') }}" class="dropdown-item {{ $url == 'tentang' ? 'active' : '' }}"><i class="dropdown-item-icon mdi mdi-domain"></i>Tentang Kami</a>
                             <a href="{{ url('/lokasi') }}" class="dropdown-item {{ $url == 'lokasi' ? 'active' : '' }}"><i class="dropdown-item-icon mdi mdi-map-marker-outline"></i>Lokasi Latihan</a>
@@ -89,11 +90,11 @@
     <footer class="pt-5 mt-2 container">
             <nav class="navbar navbar-light bg-transparent navbar-expand d-block d-sm-flex text-center">
                 <span class="navbar-text">&copy; Timbul Aquatic Club <?= date('Y') == 2021 ? 2021 : "2021-".date('Y') ?>. All rights reserved.</span>
-                {{-- <span class="navbar-text ml-auto">Developed by 
+                <span class="navbar-text ml-auto">Developed by 
                     <a href="http://instagram.com/bayufajariyanto" class="text-decoration-none" style="color: unset" target="_blank">
                         Bayu Fajariyanto
                     </a>
-                </span> --}}
+                </span>
             </nav>
     </footer>
     <div id="demoVideoLightbox" class="lightbox" onclick="hideVideo('video','youtube')">
