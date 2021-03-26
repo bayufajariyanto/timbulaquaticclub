@@ -63,7 +63,7 @@
                                 Program
                             </a>
                             <div class="dropdown-menu dropdown-menu-right mt-n1" id="program">
-                                <a href="#" class="dropdown-item text-break" style="margin-top: -8px" ng-repeat="(key, value) in programs"><i class="dropdown-item-icon"></i>@{{ value.nama }}</a>
+                                <a href="/harga/detail/@{{value.linkid}}" class="dropdown-item text-break" style="margin-top: -8px" ng-repeat="(key, value) in programs"><i class="dropdown-item-icon"></i>@{{ value.nama }}</a>
                                 {{-- <a href="#" class="dropdown-item" style="margin-top: -8px"><i class="dropdown-item-icon mdi mdi-shape-outline"></i>Paket 1</a>
                                 <a href="#" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-lock-outline"></i>2. Kelas Privat</a>
                                 <a href="#" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-shield-account-outline"></i>3. Kelas Anak Berkebutuhan Khusus/Terapi</a>

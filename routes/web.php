@@ -46,6 +46,7 @@ Route::name('murid.')->prefix('/atlit')->group(function() {
     Route::get('/list', 'MuridController@list')->name('list');
     Route::get('/detail/{id}', 'MuridController@detail')->name('detail');
     Route::get('/nilai', 'NilaiController@nilai')->name('nilai');
+    Route::get('/destroy/{id}', 'MuridController@destroy')->name('destroy');
 });
 Route::name('akun.')->prefix('/akun')->group(function() {
     Route::get('/', 'AkunController@show')->name('list');

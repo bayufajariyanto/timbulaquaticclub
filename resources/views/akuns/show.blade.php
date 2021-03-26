@@ -63,7 +63,7 @@
                                 <div class="form-group">
                                     <label for="roles">Roles</label>
                                     <select class="form-control" id="roles" name="roles">
-                                        <option value="Admin">Admin</option>
+                                        <option value="Admin">Coach</option>
                                         <option value="Super Admin">Super Admin</option>            
                                     </select>
                                 </div>
@@ -107,7 +107,7 @@
                         <td>{{ $no++ }}</td>                                                
                         <td>{{ $u->email }}</td>                        
                         <td>{{ $u->name }}</td>                        
-                        <td><span class="badge badge-primary">{{ $u->roles }}</span></td>
+                        <td><span class="badge badge-primary">{{ ($u->roles == "Admin") ? 'Coach' : 'Super Admin' }}</span></td>
                         <td> 
                             <a class="btn btn-info btn-sm" href="{{route('akun.edit', ['id' =>  $u->id])}}">Edit</a>
                             <a class="btn btn-danger btn-sm" href="{{route('akun.hapus', ['id' => $u->id])}}">Hapus</a>

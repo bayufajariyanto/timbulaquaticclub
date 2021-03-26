@@ -1,4 +1,16 @@
 @extends('layouts.dashboard')
+@if (session('message'))
+    @section('alert')
+    <div class="row" id="proBanner">
+        <div class="col-12">
+            <span class="d-flex align-items-center purchase-popup">
+            <p>{{ session('message') }}</p>
+            <i class="mdi mdi-close ml-auto" id="bannerClose"></i>
+            </span>
+        </div>
+    </div>
+    @endsection
+@endif
 @section('breadcumb')
 <div class="page-header">
     <h3 class="page-title">
@@ -46,7 +58,10 @@
                         <td> {{$atlit->telp}} </td>
                         <td> <img src="{{asset('storage/upload/img/atlit/'.$atlit->foto)}}" class="mr-2" alt="image"> </td>
                         <td> {{ucfirst($atlit->approver)}} </td>
-                        <td> <a class="btn btn-info btn-sm" href="{{route('murid.detail', ['id' => $atlit->id])}}">Detail</a> </td>
+                        <td> 
+                            <a class="btn btn-info btn-sm" href="{{route('murid.detail', ['id' => $atlit->id])}}">Detail</a> 
+                            <a class="btn btn-danger btn-sm" href="{{route('murid.destroy', ['id' => $atlit->id])}}">Hapus</a> 
+                        </td>
                     </tr>
                 @empty
                     <tr>

@@ -80,7 +80,7 @@ class AdministratorController extends Controller
         $data = Pertanyaan::find($id);
         $data->delete();
 
-        return redirect()->route('pertanyaan')->with('message', 'Berhasil menghapus pertanyaan');
+        return redirect()->route('pertanyaan.list')->with('message', 'Berhasil menghapus pertanyaan');
     }
 
     public function laporan()

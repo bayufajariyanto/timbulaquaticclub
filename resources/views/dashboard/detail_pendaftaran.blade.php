@@ -100,7 +100,7 @@
                 </a>
                 <a class="btn btn-gradient-danger" href="{{route('pendaftaran.destroy', ['id' => $data->id])}}">
                     <span class="mdi mdi-delete"> Tolak</span>
-                </a>
+                </a>                
                 @endif
             </div>
             <div class="col-md-4 mb-5">            
