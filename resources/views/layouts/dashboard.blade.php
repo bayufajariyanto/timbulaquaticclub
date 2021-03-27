@@ -75,12 +75,12 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">                
-                    <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
+                    {{-- <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('home') }}">
                         <span class="menu-title">Dashboard</span>
                         <i class="mdi mdi-home menu-icon"></i>
                     </a>
-                    </li>            
+                    </li>             --}}
                     @can('manage-administration')                    
                     <li class="nav-item {{ Route::is('pertanyaan.list') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('pertanyaan.list') }}">
