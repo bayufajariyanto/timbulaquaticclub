@@ -93,8 +93,12 @@
                             <a href="https://youtu.be/edPI5cdWgbM" class="nav-link nav-icon icon-youtube" onMouseOver="this.style.color='#F00'" onMouseOut="this.style.color='#FFF'" target="_blank"><i class="mdi mdi-youtube"></i></a> --}}
                             @guest
                                 <a href="{{ url('/login') }}" class="btn btn-primary">Login</a>    
-                            @else                                
-                                <a href="{{ route('home') }}" class="btn btn-primary">Dashboard</a>    
+                            @else               
+                                @can('display-nilai')                                    
+                                    <a href="{{ route('murid.nilai') }}" class="btn btn-primary">Dashboard</a>    
+                                @else
+                                    <a href="{{ route('pertanyaan.list') }}" class="btn btn-primary">Dashboard</a>    
+                                @endcan                 
                             @endguest
                             
                         </li>

@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('/tes', function() {
     return view('dashboard.tes');
 });
-Route::get('/home', 'HomeController@index')->name('home');
+
 Route::name('pertanyaan.')->prefix('/pertanyaan')->group(function() {
     Route::get('/', 'AdministratorController@pertanyaan')->name('list');
     Route::post('/store', 'LandingPage@tanya')->name('store');

@@ -81,7 +81,15 @@
                             <a href="{{ url('/lokasi') }}" class="dropdown-item {{ $url == 'lokasi' ? 'active' : '' }}"><i class="dropdown-item-icon mdi mdi-map-marker-outline"></i>Lokasi Latihan</a>
                         </div>
                     </li>
+                    @guest                        
                         <a href="{{ url('/login') }}" class="btn btn-primary">Login</a>
+                    @else
+                    @can('display-nilai')                                    
+                        <a href="{{ route('murid.nilai') }}" class="btn btn-primary">Dashboard</a>    
+                    @else
+                        <a href="{{ route('pertanyaan.list') }}" class="btn btn-primary">Dashboard</a>    
+                    @endcan                 
+                    @endguest
                 </div>
             </div>
         </div>
