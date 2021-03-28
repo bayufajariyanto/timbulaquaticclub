@@ -42,10 +42,7 @@ class NilaiController extends Controller
                 ->get();        
             
             $atlit = DB::table('users as u')
-                ->select(
-                    's.nama',                
-                    DB::raw('YEAR(u.created_at) as tahun_masuk'),                
-                )
+                ->select('s.nama', DB::raw('YEAR(u.created_at) as tahun_masuk'))
                 ->join('students as s', 'u.email', '=', 's.email')
                 ->where('u.id', $id)
                 ->get();         
@@ -72,10 +69,7 @@ class NilaiController extends Controller
             $bulan = [];
             $pelatih = [];
             $atlit = DB::table('users as u')
-                ->select(
-                    's.nama',                
-                    DB::raw('YEAR(u.created_at) as tahun_masuk'),                
-                )
+                ->select('s.nama', DB::raw('YEAR(u.created_at) as tahun_masuk'))
                 ->join('students as s', 'u.email', '=', 's.email')
                 ->where('u.id', $id)
                 ->get();            
