@@ -13,20 +13,21 @@ class AkunController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(function($request, $next) {
+        $this->middleware(function ($request, $next) {
             if (Gate::allows('manage-users')) return $next($request);
-            abort(403,'Anda tidak memiliki cukup hak akses');
+            abort(403, 'Anda tidak memiliki cukup hak akses');
         });
     }
 
     public function show()
     {
-        $data = User::where(function($query) {
+        $data = User::where(function ($query) {
             return $query->where('roles', 'Super Admin')->orWhere('roles', 'Admin');
         })
             ->orderByDesc('id')
             ->get();
-        return view('akuns.show', ['user' => $data]);
+        $email = Auth::user()->email;
+        return view('akuns.show', ['user' => $data, "email" => $email]);
     }
 
     public function add()
@@ -48,7 +49,7 @@ class AkunController extends Controller
             return response(['error' => $validators->errors(), 'Validation Error']);
         }
 
-        $data = $request->all();        
+        $data = $request->all();
 
         if ($data['password'] != $data['repassword']) return redirect()->route('akun.tambah')->with('message', 'Password tidak cocok');
 
@@ -60,7 +61,7 @@ class AkunController extends Controller
         $user->save();
 
         return redirect()->route('akun.list')->with('message', 'Berhasil menambahkan data akun');
-    }    
+    }
 
     public function edit($id)
     {
@@ -82,7 +83,7 @@ class AkunController extends Controller
             return response(['error' => $validators->errors(), 'Validation Error']);
         }
 
-        $data = $request->all();        
+        $data = $request->all();
 
         if ($data['password'] != $data['repassword']) return redirect()->route('akun.tambah')->with('message', 'Password tidak cocok');
 
@@ -94,13 +95,13 @@ class AkunController extends Controller
         $user->save();
 
         return redirect()->route('akun.list')->with('message', 'Berhasil mengubah data akun');
-    }    
-    
+    }
+
     public function destroy($id)
     {
         $user = User::find($id);
         $user->delete();
-        
-        return redirect()->route('akun.list')->with('message', 'Berhasil menghapus data akun');        
+
+        return redirect()->route('akun.list')->with('message', 'Berhasil menghapus data akun');
     }
 }

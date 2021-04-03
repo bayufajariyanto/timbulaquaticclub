@@ -43,7 +43,7 @@
                     <td>
                         <img src="{{asset('storage/upload/img/atlit/'.$atlit->foto)}}" alt="image"> &nbsp; {{$atlit->name}}
                     </td>
-                    <td> {{$atlit->jenis_kelamin}} </td>
+                    <td> {{$atlit->jenis_kelamin == "laki" ? "Laki - Laki" : "Perempuan"}} </td>
                     <td>
                     <label class="badge badge-gradient-info">{{$atlit->program}}</label>
                     </td>                    

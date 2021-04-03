@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ config('app.name', 'Laravel') }} | Timbul Aquatic Club Pasuruan</title>
+    <title>Dashboard | {{ config('app.name', 'Timbul Aquatic Club') }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/css/vendor.bundle.base.css')}}">    
@@ -20,7 +20,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{asset('assets/images/logo-mini.svg')}}" />
     @yield('head')
   </head>
   <body>
@@ -28,8 +28,8 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="index.html"><img src="{{asset('assets/images/logo.svg')}}" alt="logo" /></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('assets/images/logo-mini.svg')}}" alt="logo" /></a>
+            <a class="navbar-brand brand-logo w-75" href="/"><img src="{{asset('assets/images/logo-dark.svg')}}" style="width: auto" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini w-75" href="/"><img src="{{asset('assets/images/logo-mini.svg')}}" style="width: auto" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -57,7 +57,7 @@
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                        <i class="mdi mdi-logout mr-2 text-primary"></i> Signout                         
+                        <i class="mdi mdi-logout mr-2 text-primary"></i> Logout                         
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -90,7 +90,7 @@
                     </li>
                     <li class="nav-item {{ Route::is('laporan.list') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('laporan.list') }}">
-                            <span class="menu-title">Laporan</span>
+                            <span class="menu-title">Tambah Nilai</span>
                             <i class="mdi mdi-file-document menu-icon"></i>
                         </a>
                     </li>

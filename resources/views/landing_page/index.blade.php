@@ -156,7 +156,7 @@
               <h5 class="text-center pricing-table-subtitle">PAKET HARGA</h5>
               <h1 class="text-center pricing-table-title">Tabel Harga</h1>
               <div class="row">
-                <div class="col-md-4">
+                {{-- <div class="col-md-4">
                     <div class="card pricing-card pricing-plan-basic">
                     <div class="card-body">
                         <i class="mdi mdi-cube-outline pricing-plan-icon"></i>
@@ -169,16 +169,14 @@
                         <li>10 participants max</li>
                         </ul>
                         <a href="#!" class="btn pricing-plan-purchase-btn">Detail</a>
-                        {{-- <a href="#!" class="btn btn-outline-primary">Detail</a> --}}
                     </div>
                     </div>
-                </div>
-                <div class="col-md-4">
+                </div> --}}
+                <div class="col-md-3">
                     <div class="card pricing-card pricing-card-highlighted  pricing-plan-pro">
                     <div class="card-body">
                         <i class="mdi mdi-wallet-giftcard pricing-plan-icon"></i>
-                        {{-- <i class="mdi mdi-trophy pricing-plan-icon"></i> --}}
-                        <p class="pricing-plan-title">Kelas Privat</p>
+                        <p class="pricing-plan-title">Paket Privat</p>
                         <h3 class="pricing-plan-cost ml-auto">Rp 750K</h3>
                         <ul class="pricing-plan-features">
                             <li>1 jam/pertemuan</li>
@@ -191,10 +189,9 @@
                     </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card pricing-card pricing-plan-enterprise">
                     <div class="card-body">
-                        {{-- <i class="mdi mdi-wallet-giftcard pricing-plan-icon"></i> --}}
                         <i class="fas fa-child pricing-plan-icon"></i>
                         <p class="pricing-plan-title">Kelas Anak Berkebutuhan Khusus/Kelas Terapi</p>
                         <h3 class="pricing-plan-cost ml-auto">Rp 200K</h3>
@@ -210,33 +207,27 @@
                     </div>
                     </div>
                 </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-1"></div>
-                  <div class="col-md-4">
-                    <div class="card pricing-card  pricing-plan-pro">
-                        <div class="card-body">
-                            <i class="fas fa-baby pricing-plan-icon"></i>
-                            {{-- <i class="mdi mdi-trophy pricing-plan-icon"></i> --}}
-                        <p class="pricing-plan-title">Kelas Pemula</p>
-                        <h3 class="pricing-plan-cost ml-auto">Rp 150K</h3>
-                        <ul class="pricing-plan-features">
-                            <li>1,5 jam/pertemuan</li>
-                            <li>4X pertemuan</li>
-                            <li>Custom Hold Music</li>
-                            <li>10 participants max</li>
-                        </ul>
-                        <p><small class="text-muted">*Sudah termasuk tiket kolam</small></p>
-                        <a href="{{route('detailprice', ['id' => 2])}}" class="btn pricing-plan-purchase-btn">Detail</a>
-                        </div>
-                    </div>
+                <div class="col-md-3">
+                  <div class="card pricing-card  pricing-plan-pro">
+                      <div class="card-body">
+                          <i class="fas fa-baby pricing-plan-icon"></i>
+                      <p class="pricing-plan-title">Kelas Pemula</p>
+                      <h3 class="pricing-plan-cost ml-auto">Rp 150K</h3>
+                      <ul class="pricing-plan-features">
+                          <li>1,5 jam/pertemuan</li>
+                          <li>4X pertemuan</li>
+                          <li>Custom Hold Music</li>
+                          <li>10 participants max</li>
+                      </ul>
+                      <p><small class="text-muted">*Sudah termasuk tiket kolam</small></p>
+                      <a href="{{route('detailprice', ['id' => 2])}}" class="btn pricing-plan-purchase-btn">Detail</a>
+                      </div>
                   </div>
-                  <div class="col-md-2"></div>
-                  <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
                     <div class="card pricing-card pricing-plan-enterprise">
                         <div class="card-body">
                             <i class="mdi mdi-trophy pricing-plan-icon"></i>
-                            {{-- <i class="mdi mdi-wallet-giftcard pricing-plan-icon"></i> --}}
                             <p class="pricing-plan-title">Kelas Prestasi/Selam</p>
                             <h3 class="pricing-plan-cost ml-auto">Rp 130K</h3>
                             <ul class="pricing-plan-features">
@@ -250,7 +241,6 @@
                         </div>
                         </div>
                   </div>
-                  <div class="col-md-1"></div>
               </div>
             </div>
         </main>

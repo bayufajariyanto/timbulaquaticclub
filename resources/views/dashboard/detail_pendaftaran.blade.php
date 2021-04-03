@@ -58,7 +58,7 @@
                     </tr>
                     <tr>
                         <th>Jenis Kelamin</th>
-                        <td>{{$data->jenis_kelamin}}</td>
+                        <td>{{$data->jenis_kelamin == "laki" ? "Laki - Laki" : "Perempuan"}}</td>
                     </tr>
                     <tr>
                         <th>Alamat</th>

@@ -103,16 +103,18 @@
                     $no = 1;
                 @endphp                
                 @forelse ($user as $u)
+                    @if($u->email != $email)
                     <tr>
                         <td>{{ $no++ }}</td>                                                
                         <td>{{ $u->email }}</td>                        
                         <td>{{ $u->name }}</td>                        
                         <td><span class="badge badge-primary">{{ ($u->roles == "Admin") ? 'Coach' : 'Super Admin' }}</span></td>
-                        <td> 
+                        <td class="text-right"> 
                             <a class="btn btn-info btn-sm" href="{{route('akun.edit', ['id' =>  $u->id])}}">Edit</a>
                             <a class="btn btn-danger btn-sm" href="{{route('akun.hapus', ['id' => $u->id])}}">Hapus</a>
                         </td>
                     </tr>
+                    @endif
                 @empty
                     <tr>
                         <td>Data tidak ditemukan</td>

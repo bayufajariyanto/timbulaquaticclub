@@ -16,7 +16,7 @@
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-file-document"></i>
-        </span> Laporan
+        </span> Tambah Nilai
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
@@ -38,7 +38,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                        </div>                        
+                        </div>
                         <form action="{{ route('laporan.store') }}" method="POST" id="inputnilai">
                             @csrf
                             <div class="modal-body bg-white">

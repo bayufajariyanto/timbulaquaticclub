@@ -252,36 +252,36 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
     $scope.firstName = "John";
     $scope.form = []
     $scope.programs = [
+        // {
+        //     nama: "1. Kelas Privat",
+        //     desc: "<br><span class='text-danger highlight'>*</span>Tiket kolam bayar sendiri di Loket / Kasir.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono, Kolam Renang Katak Riang, Kolam Renang Millenium.<br><span class='text-danger highlight'>*</span>Jadwal bisa menyesuaikan dengan Pelatih.",
+        //     icon: "mdi mdi-cube-outline",
+        //     value: "Kelas Privat",
+        //     linkid: 0
+        // },
         {
-            nama: "1. Kelas Privat",
-            desc: "<br><span class='text-danger highlight'>*</span>Tiket kolam bayar sendiri di Loket / Kasir.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono, Kolam Renang Katak Riang, Kolam Renang Millenium.<br><span class='text-danger highlight'>*</span>Jadwal bisa menyesuaikan dengan Pelatih.",
-            icon: "mdi mdi-cube-outline",
-            value: "Kelas Privat",
-            linkid: 0
-        },
-        {
-            nama: "2. Paket Privat",
+            nama: "1. Paket Privat",
             desc: "<br><span class='text-danger highlight'>*</span>Tiket kolam bayar sendiri di Loket / Kasir.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono, Kolam Renang Katak Riang, Kolam Renang Millenium.<br><span class='text-danger highlight'>*</span>Jadwal bisa menyesuaikan dengan Pelatih.",
             icon: "mdi mdi-wallet-giftcard",
             value: "Paket Privat",
             linkid: 0
         },
         {
-            nama: "3. Kelas Anak Berkebutuhan Khusus/Terapi",
+            nama: "2. Kelas Anak Berkebutuhan Khusus/Terapi",
             desc: "<br><span class='text-danger highlight'>*</span>Untuk murid baru wajib membayar Biaya Pendaftaran (50k).<br><span class='text-danger highlight'>*</span>Sudah Termasuk Tiket Kolam.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1,5 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono, Kolam Renang Katak Riang, Kolam Renang Millenium.<br><span class='text-danger highlight'>*</span>Jadwal bisa menyesuaikan dengan Pelatih.",
             icon: "fas fa-child",
             value: "Kelas Anak Berkebutuhan Khusus/Terapi",
             linkid: 3
         },
         {
-            nama: "4. Kelas Pemula",
+            nama: "3. Kelas Pemula",
             desc: "<br><span class='text-danger highlight'>*</span>Untuk murid baru wajib membayar Biaya Pendaftaran (50k).<br><span class='text-danger highlight'>*</span>Sudah Termasuk Tiket Kolam.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1,5 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono dan Kolam Renang Katak Riang.<br><span class='text-danger highlight'>*</span>Jadwal Setiap Hari Senin dan Sabtu Pukul 06.00-09.00 AM.",
             icon: "fas fa-baby",
             value: "Kelas Pemula",
             linkid: 2
         },
         {
-            nama: "5. Kelas Prestasi/Selam",
+            nama: "4. Kelas Prestasi/Selam",
             desc: "<br><span class='text-danger highlight'>*</span>Wajib Bisa 4 gaya.<br><span class='text-danger highlight'>*</span>Untuk murid baru wajib membayar Biaya Pendaftaran (50k).<br><span class='text-danger highlight'>*</span>Sudah Termasuk Tiket Kolam.<br><span class='text-danger highlight'>*</span>Setiap Pertemuan 1,5 jam Pembelajaran.<br><span class='text-danger highlight'>*</span>Kolam Renang Tirto Kencono dan Kolam Renang Katak Riang.<br><span class='text-danger highlight'>*</span>Jadwal Akan disampaikan setelah mendaftar.",
             icon: "mdi mdi-trophy",
             value: "Kelas Prestasi/Selam",
@@ -289,23 +289,23 @@ app.controller('controller',  ['$scope', '$http', function ($scope, $http) {
         }
     ]
     $scope.jumlah = [
-        [
-            {
-                nama: "1 Orang - Rp 75K",
-                desc: "",
-                jumlah: 1
-            },
-            {
-                nama: "2 Orang - Rp 140K",
-                desc: "",
-                jumlah: 2
-            },
-            {
-                nama: "3 Orang - Rp 200K",
-                desc: "",
-                jumlah: 3
-            }
-        ],
+        // [
+        //     {
+        //         nama: "1 Orang - Rp 75K",
+        //         desc: "",
+        //         jumlah: 1
+        //     },
+        //     {
+        //         nama: "2 Orang - Rp 140K",
+        //         desc: "",
+        //         jumlah: 2
+        //     },
+        //     {
+        //         nama: "3 Orang - Rp 200K",
+        //         desc: "",
+        //         jumlah: 3
+        //     }
+        // ],
         [
             {
                 nama: "1 Orang - Rp 750K",
