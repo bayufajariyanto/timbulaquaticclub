@@ -66,7 +66,7 @@
                     </tr>
                     <tr>
                         <th>Riwayat Gangguan Tertentu</th>
-                        <td>{{$data->riwayat}}</td>
+                        <td>{{$data->riwayat == null ? '-' : $data->riwayat}}</td>
                     </tr>
                 </table>                                                
                 <h4 class="card-title mt-5">Paket</h4>
